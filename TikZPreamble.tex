@@ -1,0 +1,104 @@
+\ifdefined\INCLUDETIKZ
+\else 
+
+\documentclass[12pt, tikz, border=0mm]{standalone}
+
+% Schriften
+\usepackage{DissertationFontPackage}
+% Tikz-Paket
+\usepackage{TikZPackage}
+
+% Ergaenzungen
+\input{template/setAdditions}
+\input{template/setData}
+\input{template/setTikZStyles}
+
+% Glossaries
+\newglossary*{akronym}{Abkürzungen}
+\newglossary*{indices}{Indizes}
+\newglossary*{latin_symbols}{Lateinische Formelzeichen}
+\newglossary*{greek_symbols}{Griechische Formelzeichen}
+
+\glsaddkey
+{unit}
+{\glsentrytext{\glslabel}}
+{\glsentryunit}
+{\GLsentryunit}
+{\glsunit}
+{\Glsunit}
+{\GLSunit}
+
+\glsaddkey
+{value}
+{\glsentrytext{\glslabel}}
+{\glsentryvalue}
+{\GLsentryvalue}
+{\glsvalue}
+{\Glsvalue}
+{\GLSvalue}
+
+\glsaddkey
+{size}
+{\glsentrytext{\glslabel}}
+{\glsentrysize}
+{\GLsentrysize}
+{\glssize}
+{\Glssize}
+{\GLSsize}
+
+\glsaddkey
+{addinfo}
+{\glsentrytext{\glslabel}}
+{\glsentryaddinfo}
+{\GLsentryaddinfo}
+{\glsaddinfo}
+{\Glsaddinfo}
+{\GLSaddinfo}
+
+\glssetnoexpandfield{unit}
+\glssetnoexpandfield{size}
+\glssetnoexpandfield{addinfo}
+
+\DeclareRobustCommand*{\newakronym}[3]{%
+	\newglossaryentry{#1}{
+		type={akronym},
+		name={#2},
+		sort={#2},
+		description={#3}
+}}
+
+\DeclareRobustCommand*{\newindex}[4]{%
+	\newglossaryentry{#1}{
+		type={indices},
+		name={\ensuremath{#2}},
+		sort=#4,
+		description={#3}
+}}
+
+\DeclareRobustCommand*{\newlatin}[8]{%
+	\newglossaryentry{#1}{
+		type={latin_symbols},
+		name={\ensuremath{#2}},
+		sort={#8},
+		size={#6},
+		addinfo={#7},
+		description={#3},
+		unit={\si{#4}},
+		value={\ensuremath{#5}}
+}}
+
+\DeclareRobustCommand*{\newgreek}[8]{%
+	\newglossaryentry{#1}{
+		type={greek_symbols},
+		name={\ensuremath{#2}},
+		sort={#8},
+		size={#6},
+		addinfo={#7},
+		description={#3},
+		unit={\si{#4}},
+		value={\ensuremath{#5}}
+}}
+
+\DeclareRobustCommand{\glscaption}[1]{\glsentrytext{#1}}
+
+\fi

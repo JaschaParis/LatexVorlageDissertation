@@ -1,0 +1,41 @@
+\documentclass[
+	ngerman,			% ngerman / english	, 
+	headsepline,		% Strich unter der Kopfzeile
+	open	= right,	% rechtsöffnend
+	%cleardoublepage = empty %nachschlagen, kommt von MA
+	draft 	= false,	% [final/draft]			Document status
+	twoside	= true,		% [false/true]		single-sided document
+	paper = a4,
+	parskip			= half,
+	fontsize		= 12pt,
+	pagesize,			
+	DIV=14,			%Teilung berechnen (calc) oder als Zahlenwert angeben
+	BCOR = 8mm,	
+	toc				= graduated,
+	toc 			= chapterentrywithdots,
+	listof			= totoc,	
+	listof			= flat,	
+	bibliography	= totoc,	% 			Literature in table of content
+	headinclude=true,	%Kopfzeile zum Textkörper zählen
+	footinclude=false,	%Fußzeile zum Textkröper zählen	
+	headings=small,
+	fleqn				% {equation} left justify
+	]{scrbook}          % Koma-Script
+	
+	
+% Pakete / Packages
+
+% PDF Versionen fuer hohe Kompression
+\pdfminorversion=7
+\pdfcompresslevel=9 
+
+% Lade Pakete
+\usepackage{DissertationPackage}
+\input{template/setData}
+\input{template/setAdditions}
+
+\AfterBibliographyPreamble{\raggedright}
+
+% Optional für eingebettete TikZ-Grafiken
+\usepackage{TikZPackage}
+\input{template/setTikZStyles}

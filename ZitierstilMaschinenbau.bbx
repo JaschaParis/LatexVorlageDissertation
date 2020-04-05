@@ -1,0 +1,474 @@
+\ProvidesFile{ZitierstilMaschinenbau.bbx}[ZitierstilMaschinenbau]
+
+\RequireBibliographyStyle{standard}
+\ExecuteBibliographyOptions{labelalpha,sorting=anyt}
+
+\DeclareNameAlias{author}{default}
+\DeclareNameAlias{editor}{default}
+\DeclareNameAlias{translator}{default}
+\DefineBibliographyStrings{ngerman}{%
+  mathesis = {Masterarbeit},
+}
+
+\DeclareFieldFormat{labelalphawidth}{\mkbibbrackets{#1}}
+\DeclareFieldFormat{shorthandwidth}{\mkbibbrackets{#1}}
+
+% Ab hier sind die Veränderungen für den IGM-Style eingefügt
+% Neue Befehle werden hier definiert oder alte umdefiniert
+
+\defbibenvironment{bibliography}
+  {\list
+     {\printtext[labelalphawidth]{%
+        \printfield{labelprefix}%
+	\printfield{labelalpha}%
+        \printfield{extraalpha}}}
+     {\setlength{\labelwidth}{\labelalphawidth}%
+      \setlength{\leftmargin}{\labelwidth}%
+      \setlength{\labelsep}{\biblabelsep}%
+      \addtolength{\leftmargin}{\labelsep}%
+      \setlength{\itemsep}{\bibitemsep}%
+      \setlength{\parsep}{\bibparsep}}%
+      \renewcommand*{\makelabel}[1]{##1\hss}}
+  {\endlist}
+  {\item}
+
+\defbibenvironment{shorthand}
+  {\list
+     {\printfield[shorthandwidth]{shorthand}}
+     {\setlength{\labelwidth}{\shorthandwidth}%
+      \setlength{\leftmargin}{\labelwidth}%
+      \setlength{\labelsep}{\biblabelsep}%
+      \addtolength{\leftmargin}{\labelsep}%
+      \setlength{\itemsep}{\bibitemsep}%
+      \setlength{\parsep}{\bibparsep}%
+      \renewcommand*{\makelabel}[1]{##1\hss}}}
+  {\endlist}
+  {\item}
+
+% Anpassen der Driver für die unterschiedlichen Dokumententypen
+
+\DeclareBibliographyDriver{article}{%
+  \usebibmacro{bibindex}%
+  \usebibmacro{begentry}%
+  \usebibmacro{author/translator+others}%
+  \setunit{\labelnamepunct}\newblock
+  \usebibmacro{title}%
+  \newline\nopunct																	% geändert: Zeilenumbruch ohne Punkt nach Titel
+  \usebibmacro{in:}%
+  \usebibmacro{journal}
+  \newunit
+  \usebibmacro{volume+date+number}%
+  \newunit\newblock
+  \usebibmacro{doi+eprint+url}%
+  \newunit\newblock
+  \usebibmacro{note+pages}%
+  \newunit\newblock
+  \usebibmacro{pageref}%
+  \usebibmacro{finentry}}
+  
+\DeclareBibliographyDriver{book}{%
+  \usebibmacro{bibindex}%
+  \usebibmacro{begentry}%
+  \usebibmacro{author}%
+  \setunit{\labelnamepunct}\newblock
+  \usebibmacro{title}%
+  \newline\nopunct																	% geändert: Zeilenumbruch ohne Punkt nach Titel
+  \usebibmacro{publisher+location}													% geändert: publisher+location+date in publisher+location geändert um Verlag, Verlagsort vom Datum zu trennen\printfield{edition}%
+  \newunit\newblock
+  \printfield{edition}%
+  \newunit\newblock
+  \usebibmacro{date}
+  \newunit\newblock
+  \iftoggle{bbx:isbn}
+    {\printfield{isbn}}
+    {}%
+  \newunit\newblock
+  \usebibmacro{doi+eprint+url}%
+  \newunit\newblock
+  \usebibmacro{pageref}%
+  \usebibmacro{finentry}}
+
+\DeclareBibliographyDriver{collection}{%
+  \usebibmacro{bibindex}%
+  \usebibmacro{begentry}%
+  \usebibmacro{editor}%
+  \setunit{\labelnamepunct}\newblock
+  \usebibmacro{title}%
+  \newline\nopunct																	% geändert: Zeilenumbruch ohne Punkt nach Titel
+  \usebibmacro{publisher+location}													% geändert: publisher+location+date in publisher+location geändert um Verlag, Verlagsort vom Datum zu trennen\printfield{edition}%
+  \newunit\newblock
+  \printfield{edition}%
+  \newunit\newblock
+  \usebibmacro{date}
+  \newunit\newblock
+  \iftoggle{bbx:isbn}
+    {\printfield{isbn}}
+    {}%
+  \newunit\newblock
+  \usebibmacro{doi+eprint+url}%
+  \newunit\newblock
+  \usebibmacro{pageref}%
+  \usebibmacro{finentry}}
+
+\DeclareBibliographyDriver{inbook}{%
+  \usebibmacro{bibindex}%
+  \usebibmacro{begentry}%
+  \usebibmacro{author/translator+others}%
+  \setunit{\labelnamepunct}\newblock
+  \usebibmacro{title}%
+  \newline\nopunct																	% geändert: Zeilenumbruch ohne Punkt nach Titel
+  \usebibmacro{in:}%
+  \usebibmacro{editor}%
+  \newunit\newblock
+  \usebibmacro{booktitle}%
+  \newunit\newblock
+  \usebibmacro{publisher+location}													% geändert: publisher+location+date in publisher+location geändert um Verlag, Verlagsort vom Datum zu trennen\printfield{edition}%
+  \newunit\newblock
+  \printfield{edition}%
+  \newunit\newblock
+  \usebibmacro{date}
+  \newunit\newblock
+  \iftoggle{bbx:isbn}
+    {\printfield{isbn}}
+    {}%
+  \newunit\newblock
+  \usebibmacro{chapter+pages}%
+  \newunit\newblock
+  \usebibmacro{pageref}%
+  \usebibmacro{finentry}}
+
+\DeclareBibliographyDriver{incollection}{%
+  \usebibmacro{bibindex}%
+  \usebibmacro{begentry}%
+  \usebibmacro{author/translator+others}%
+  \setunit{\labelnamepunct}\newblock
+  \usebibmacro{title}%
+  \newline\nopunct																	% geändert: Zeilenumbruch ohne Punkt nach Titel
+  \usebibmacro{in:}%
+  \usebibmacro{editor}%
+  \newunit\newblock
+  \usebibmacro{booktitle}%
+  \newunit\newblock
+  \usebibmacro{publisher+location}													% geändert: publisher+location+date in publisher+location geändert um Verlag, Verlagsort vom Datum zu trennen\printfield{edition}%
+  \newunit\newblock
+  \printfield{edition}%
+  \newunit\newblock
+  \usebibmacro{date}
+  \newunit\newblock
+  \iftoggle{bbx:isbn}
+    {\printfield{isbn}}
+    {}%
+  \newunit\newblock
+  \usebibmacro{chapter+pages}%
+  \newunit\newblock
+  \usebibmacro{pageref}%
+  \usebibmacro{finentry}}
+  
+  \DeclareBibliographyDriver{inproceedings}{%
+  \usebibmacro{bibindex}%
+  \usebibmacro{begentry}%
+  \usebibmacro{author/translator+others}%
+  \setunit{\labelnamepunct}\newblock
+  \usebibmacro{title}%
+  \newline\nopunct																	% geändert: Zeilenumbruch ohne Punkt nach Titel
+  \usebibmacro{in:}%
+  \usebibmacro{editor}
+  \newunit\newblock
+  \usebibmacro{booktitle}%
+  \newunit\newblock
+  \usebibmacro{event+venue+date}%
+  \newunit\newblock
+  \iftoggle{bbx:isbn}
+    {\printfield{isbn}}
+    {}%
+  \usebibmacro{chapter+pages}%
+  \newunit\newblock
+  \usebibmacro{pageref}%
+  \usebibmacro{finentry}}
+
+\DeclareBibliographyDriver{misc}{%
+  \usebibmacro{bibindex}%
+  \usebibmacro{begentry}%
+  \usebibmacro{author/editor+others/translator+others}%
+  \setunit{\labelnamepunct}\newblock
+  \usebibmacro{title}%
+  \newline\nopunct																	% geändert: Zeilenumbruch ohne Punkt nach Titel
+  \printfield{type}%
+  \newunit\newblock
+  \usebibmacro{editor}%
+  \newunit\newblock
+  \iftoggle{bbx:isbn}
+    {\printfield{isbn}}
+    {}%
+  \usebibmacro{chapter+pages}%
+  \newunit\newblock
+  \usebibmacro{doi+eprint+url}%
+  \newunit\newblock
+  \usebibmacro{pageref}%
+  \usebibmacro{finentry}}
+
+\DeclareBibliographyDriver{online}{%
+  \usebibmacro{bibindex}%
+  \usebibmacro{begentry}%
+  \ifnameundef{author}
+    {\ifnameundef{editor}
+       {\iflistundef{institution}
+			{}
+			{\printlist{institution}}}
+		{\usebibmacro{editor}}}
+  {\usebibmacro{author}}
+  \setunit{\labelnamepunct}\newblock
+  \usebibmacro{title}%
+  \newline\nopunct
+  \usebibmacro{url+urldate}%
+  \newunit\newblock
+  \usebibmacro{pageref}%
+  \usebibmacro{finentry}}  
+
+\DeclareBibliographyDriver{patent}{%
+  \usebibmacro{bibindex}%
+  \usebibmacro{begentry}%
+  \usebibmacro{author}%
+  \setunit{\labelnamepunct}\newblock
+  \usebibmacro{title}%
+  \newline\nopunct
+  \setunit*{\addspace}%
+  \printtext{Patent}
+  \newunit\newblock
+  \printfield{number}%
+  \newunit\newblock
+  \usebibmacro{date}%
+  \newunit\newblock
+  \usebibmacro{pageref}%
+  \usebibmacro{finentry}}
+  
+\DeclareBibliographyDriver{proceedings}{%
+  \usebibmacro{bibindex}%
+  \usebibmacro{begentry}%
+  \usebibmacro{editor+institution}%
+  \setunit{\labelnamepunct}\newblock
+  \printfield[emph]{eventtitle}%
+  \newline\nopunct
+  \printfield{venue}%
+  \newunit
+  \printdate
+  \newunit\newblock
+  \iftoggle{bbx:isbn}
+    {\printfield{isbn}}
+    {}%
+  \newunit\newblock
+  \usebibmacro{pageref}%
+  \usebibmacro{finentry}}
+  
+\DeclareBibliographyDriver{report}{%
+  \usebibmacro{bibindex}%
+  \usebibmacro{begentry}%
+  \usebibmacro{author}%
+  \setunit{\labelnamepunct}\newblock
+  \usebibmacro{title}%
+  \newline\nopunct
+  \usebibmacro{institution+location+date}%
+  \newunit\newblock
+  \usebibmacro{chapter+pages}%
+  \newunit\newblock
+  \usebibmacro{doi+eprint+url}%
+  \newunit\newblock
+  \usebibmacro{pageref}%
+  \usebibmacro{finentry}}
+
+\DeclareBibliographyDriver{standart}{%
+  \usebibmacro{bibindex}%
+  \usebibmacro{begentry}%
+  \usebibmacro{type+number}
+  \setunit{\labelnamepunct}\newblock
+  \usebibmacro{title}%
+  \newline\nopunct
+  \printtext{Norm}
+  \newunit\newblock
+  \printlist{institution}%
+  \newunit\newblock
+  \usebibmacro{publisher+location}%
+  \newunit\newblock
+  \usebibmacro{date}
+  \newunit\newblock
+  \usebibmacro{pageref}%
+  \usebibmacro{finentry}}
+  
+
+\DeclareBibliographyDriver{thesis}{%
+  \usebibmacro{bibindex}%
+  \usebibmacro{begentry}%
+  \usebibmacro{author}%
+  \setunit{\labelnamepunct}\newblock
+  \usebibmacro{title}%
+  \newline\nopunct
+  \printfield{type}%
+  \newunit\newblock
+  \usebibmacro{institution+organization+location}%
+  \newunit\newblock
+  \usebibmacro{date}
+  \newunit\newblock
+  \usebibmacro{doi+eprint+url}%
+  \newunit\newblock
+  \usebibmacro{addendum+pubstate}%
+  \newunit\newblock
+  \usebibmacro{pageref}%
+  \usebibmacro{finentry}}
+
+
+\DeclareLabelalphaTemplate{															% Hier werden die Shorthands manipuliert
+  \labelelement{
+    \field[final]{shorthand}
+    \field{label}
+    \field[strwidth=3,strside=left,ifnames=1]{labelname}
+    \field[strwidth=1,strside=left]{labelname}
+  }
+  \labelelement{
+    \field[strwidth=2,strside=right]{year}
+  }
+}
+
+% Diese Befehle müssen neu definiert werden, um das Datum (date) aus den Macros herauszulösen und unabhängig ans Ende schreiben zu können 
+
+\renewbibmacro*{in:}{
+  \printtext{%
+    \bibcpstring{in}\addcolon\space}}
+
+\renewbibmacro*{editor}{%
+  \ifboolexpr{
+    test \ifuseeditor
+    and
+    not test {\ifnameundef{editor}}
+  }
+    {\printnames{editor}%
+     \setunit{\addspace}%
+     \usebibmacro{editorstrg}%
+     \clearname{editor}}
+    {}}
+
+\newbibmacro*{editor+institution}{%
+  \ifnameundef{editor}
+    {\iflistundef{institution}
+      {}
+      {\printlist{institution}%
+       \setunit{\addspace}%
+       \usebibmacro{editorstrg}}}%
+	{\printnames{editor}%
+     \setunit{\addspace}%
+     \usebibmacro{editorstrg}%
+     \clearname{editor}}
+    }
+
+\renewbibmacro*{editorstrg}{%
+  \printtext[editortype]{%
+  \iffieldundef{editortype}
+    {\ifboolexpr{
+    test {\ifnumgreater{\value{editor}}{1}}
+    or
+    test {\ifandothers{editor}}
+    }
+  {\mkbibparens{\bibstring{editors}}}
+  {\mkbibparens{\bibstring{editor}}}}
+  {\ifbibxstring{\thefield{editortype}}
+  {\ifboolexpr{
+    test {\ifnumgreater{\value{editor}}{1}}
+    or
+    test {\ifandothers{editor}}
+  }
+  {\mkbibbrackets{\thefield{editortype}s}}
+  {\mkbibbrackets{\thefield{editortype}}}}
+  {\mkbibbrackets{\thefield{editortype}}}}}}
+
+\renewbibmacro*{title}{%
+  \ifboolexpr{
+    test {\iffieldundef{title}}
+    and
+    test {\iffieldundef{subtitle}}
+  }
+    {}
+    {%\printtext[title]{%
+       \printfield{title}%
+       \setunit{\subtitlepunct}%
+       \printfield{subtitle}%
+     \newunit}%
+  \printfield{titleaddon}}
+
+\renewbibmacro*{event+venue+date}{%
+  \printfield{eventtitle}%
+  \ifboolexpr{
+    test {\iffieldundef{venue}}
+    and
+    test {\iffieldundef{eventyear}}
+  }
+    {}
+    {\newunit%
+     \printfield{venue}%
+     \newunit
+     \printdate}%
+  \newunit}
+
+\newbibmacro*{publisher+location}{													% publisher und location sind hier zusammengefasst
+  \printlist{location}%
+  \iflistundef{publisher}
+    {\setunit*{\addcomma\space}}
+    {\setunit*{\addcolon\space}}%
+  \printlist{publisher}%%
+  \newunit}
+  
+  
+\newbibmacro*{institution+organization+location}{
+  \printlist{location}%
+  \ifboolexpr{
+    test {\iflistundef{organization}}
+    and
+    test {\iflistundef{institution}}
+  }
+    {}
+    {\setunit*{\addcolon\space}%
+     \printlist{organization}
+     \newunit
+     \printlist{institution}
+	 }%
+     \newunit}
+
+\newbibmacro*{type+number}{%
+  \printfield{type}
+  \iffieldundef{number}
+    {}
+    {\setunit*{\addspace}\printfield{number}}%
+   \newunit}
+
+\newbibmacro*{volume+date+number}{%
+  \printfield{volume}%
+  \space%
+  \mkbibparens{{\printdate}}%
+  \setunit*{\addspace}%
+  \printfield{number}%
+  \setunit{\addspace}%
+  \newunit}
+
+
+\renewcommand*{\newunitpunct}{\addcomma\space}									% Hinter einer neuen Unit wird ein Komma und kein Punkt mehr eingefügt
+\renewcommand*{\subtitlepunct}{\newunitpunct}
+\renewcommand*{\labelalphaothers}{} 											% Verhindert das "+" Zeichen bei mehr als drei Autoren
+\renewcommand*{\labelnamepunct}{\newline} 											% Macht hinter dem letzten Autor einen Doppelpunkt 
+\renewcommand*{\multinamedelim}{\addsemicolon\space}							% Erzeugt ein Semikolon zwischen den Autoren und verhindert das "und" zwischen letztem und vorletztem Autor
+\renewcommand*{\finalnamedelim}{\addsemicolon\space}
+
+\DeclareFieldFormat[article, inbook, incollection, inproceedings, online, patent, thesis, unpublished]{title}{\emph{#1}\isdot} 							% Der Titel bei Artikeln wird kursiv geschrieben
+\DeclareFieldFormat{isbn}{\mkbibacro{ISBN}\addcolon\space #1}
+\DeclareFieldFormat{url}{\url{#1}}
+\DeclareFieldFormat{doi}{%
+  \mkbibacro{DOI}\addcolon\space
+  \ifhyperref
+    {\href{http://dx.doi.org/{#1}}{\nolinkurl{#1}}}
+    {\nolinkurl{#1}}
+   }
+\DeclareNameAlias{default}{family-given}												% änder die Reihenfolge des Namens in Nachname, Vorname
+
+\DeclareFieldFormat{journaltitle}{#1}
+\DeclareFieldFormat{booktitle}{#1}
+\DefineBibliographyStrings{german}{
+	urlseen = {zuletzt gepr{\"u}ft am},
+}
+\endinput

@@ -1,0 +1,21 @@
+% !TeX encoding = UTF-8
+% !TeX spellcheck = en_US
+% !TeX root = ../thesis.tex
+
+tldr, windows: change \texttt{setData.tex}, run \texttt{Script\_precompile.bat}, compile all \texttt{*.tex}-files in \texttt{tikz} and finally run \texttt{thesis.tex} with \texttt{latexmk}.
+
+tldr, linux: change \texttt{setData.tex}, run \texttt{Script\_create.sh}.
+
+Latex is evolving rapidly and many packages used in templates are now obsolete. Accordingly I wanted to create a current template for my dissertation. Additionally I wanted an automatically sorted symbol directory and little by little more requirements were added. All in all, a template was created that has the following features, among others:
+
+\begin{itemize}
+	\item Pre-compile the preamble to speed up compilation.
+	\item Layouts for the submission (one page) and the final version (two pages) in one file.
+	\item Automatically sorted list of symbols and links in the text with the page number of the first occurrence.
+	\item Linked symbols in text and images.
+	\item Bibliography with indication of the page numbers on which the reference is used.
+	\item Direct integration of TikZ-files for the final version or integration of PDF files to speed up compilation.
+	\item Compliance with recommendations on typography and typesetting. The exception are the characters per line, which is slightly too high.
+	\item Environments for figures and tables that do not represent floating environments. These can be used in the appendix if many figures are inserted one after the other.
+	\item Bash-scripts for compilation using linux
+\end{itemize}

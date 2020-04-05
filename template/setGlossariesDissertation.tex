@@ -1,0 +1,194 @@
+
+%% Glossaries
+
+\newglossary*{akronym}{Abkürzungen}
+\newglossary*{indices}{Indizes}
+\newglossary*{latin_symbols}{Lateinische Formelzeichen}
+\newglossary*{greek_symbols}{Griechische Formelzeichen}
+
+\newcolumntype{P}[1]{>{\raggedright\arraybackslash}p{#1}}
+
+\glsaddkey
+{unit}
+{\glsentrytext{\glslabel}}
+{\glsentryunit}
+{\GLsentryunit}
+{\glsunit}
+{\Glsunit}
+{\GLSunit}
+
+\glsaddkey
+{value}
+{\glsentrytext{\glslabel}}
+{\glsentryvalue}
+{\GLsentryvalue}
+{\glsvalue}
+{\Glsvalue}
+{\GLSvalue}
+
+\glsaddkey
+{size}
+{\glsentrytext{\glslabel}}
+{\glsentrysize}
+{\GLsentrysize}
+{\glssize}
+{\Glssize}
+{\GLSsize}
+
+\glsaddkey
+{addinfo}
+{\glsentrytext{\glslabel}}
+{\glsentryaddinfo}
+{\GLsentryaddinfo}
+{\glsaddinfo}
+{\Glsaddinfo}
+{\GLSaddinfo}
+
+\glssetnoexpandfield{unit}
+\glssetnoexpandfield{size}
+\glssetnoexpandfield{addinfo}
+
+%Ein neuer Verzeichnisstil für Abkürzungen
+\newglossarystyle{akronym}{
+	\setglossarystyle{long}
+	\renewenvironment{theglossary}  
+	{\begin{longtable}{
+				@{} P{0.2\linewidth}
+				@{} P{0.69\linewidth}
+				@{} rp{0.09\linewidth} @{}}
+		}  
+		{\end{longtable}}
+	% Kopf der Tabelle
+	\renewcommand*{\glossaryheader}{
+		\toprule
+		\bfseries Abkürzung
+		& \bfseries Bedeutung
+		& \bfseries ab Seite
+		\\
+		\midrule
+		\endhead
+		\bottomrule \endfoot
+	}
+	\renewcommand*{\glossentry}[2]{
+		\glstarget{##1}{\glossentryname{##1}} %Abkürzung
+		& \glossentrydesc{##1}   %Beschreibung
+		& ##2
+		\\
+	}
+}
+%Ein neuer Verzeichnisstil für Symbole, der auch die Einheit mit ausgibt
+\newglossarystyle{symbols}{
+	\setglossarystyle{long3col}
+	\renewenvironment{theglossary}
+	{\begin{longtable}{
+				@{} P{0.12\linewidth}
+				@{} P{0.16\linewidth}
+				%				@{} p{0.12\linewidth}
+				@{} P{0.60\linewidth}
+				@{} rp{0.09\linewidth} @{}}
+		}
+		{\end{longtable}}
+	% Kopf der Tabelle
+	\renewcommand*{\glossaryheader}{  
+		\toprule        
+		\bfseries Symbol
+		& \bfseries Einheit
+		%		& \bfseries Wert
+		& \bfseries Bedeutung
+		& \bfseries ab Seite
+		\\
+		\midrule
+		\endhead
+		\bottomrule \endfoot
+	}
+	\renewcommand*{\glossentry}[2]{
+		\ensuremath{\glstarget{##1}{\glossentryname{##1}}\glsentryaddinfo{##1}}
+		%		& $\left[\glsentryunit{##1}\right]$% <- geändert
+		%		& \glsentryvalue{##1}%Wert
+		& \ifthenelse{\equal{\glsentrysize{##1}}{}}%
+		{\ensuremath{\glsentryvalue{##1} \left[\glsentryunit{##1}\right]}}%
+		{\ensuremath{\glsentryvalue{##1} \left[\glsentryunit{##1}\right]_{\{ \glsentrysize{##1} \}}}}
+		& \glossentrydesc{##1}
+		& ##2
+		\\
+	}
+}
+
+%Ein neuer Verzeichnisstil für Indizes, wie ein Abkürzungsverzeichnis, nur statt Abkürzung Index
+\newglossarystyle{indices}{  
+	\setglossarystyle{long}
+	\renewenvironment{theglossary}  
+	{\begin{longtable}{
+				@{} P{0.2\linewidth}
+				@{} P{0.69\linewidth}
+				@{} rp{0.09\linewidth} @{}}
+		}  
+		{\end{longtable}}
+	% Kopf der Tabelle
+	\renewcommand*{\glossaryheader}{  
+		\toprule
+		\bfseries Index
+		& \bfseries Bedeutung
+		& \bfseries ab Seite
+		\\
+		\midrule
+		\endhead
+		\bottomrule \endfoot
+	}
+	\renewcommand*{\glossentry}[2]{
+		\ensuremath{\glstarget{##1}{\glossentryname{##1}}} %Abkürzung
+		& \glossentrydesc{##1}   %Beschreibung
+		& ##2
+		\\
+	}
+}
+\renewcommand*{\glspostdescription}{}
+
+\defglsentryfmt[symbols]{%
+	\ifmmode%
+	\glssymbol{\glslabel}%
+	\else%
+	\glsgenentryfmt~\glsentrysymbol{\glslabel}%
+	\fi%
+}
+
+
+\DeclareRobustCommand*{\newakronym}[3]{%
+	\newglossaryentry{#1}{
+		type={akronym},
+		name={#2},
+		sort={#2},
+		description={#3}
+}}
+
+\DeclareRobustCommand*{\newindex}[4]{%
+	\newglossaryentry{#1}{
+		type={indices},
+		name={\ensuremath{#2}},
+		sort=#4,
+		description={#3}
+}}
+
+\DeclareRobustCommand*{\newlatin}[8]{%
+	\newglossaryentry{#1}{
+		type={latin_symbols},
+		name={\ensuremath{#2}},
+		sort={#8},
+		size={#6},
+		addinfo={#7},
+		description={#3},
+		unit={\si{#4}},
+		value={\ensuremath{#5}}
+}}
+
+\DeclareRobustCommand*{\newgreek}[8]{%
+	\newglossaryentry{#1}{
+		type={greek_symbols},
+		name={\ensuremath{#2}},
+		sort={#8},
+		size={#6},
+		addinfo={#7},
+		description={#3},
+		unit={\si{#4}},
+		value={\ensuremath{#5}}
+}}

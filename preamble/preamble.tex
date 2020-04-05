@@ -1,0 +1,45 @@
+% !TeX encoding = UTF-8
+% !TeX spellcheck = de_DE
+% !TeX root = ../thesis.tex
+
+\ifdefined\VORLEGEN
+	\input{preamble/deckblatt_zulassung}
+\else 
+	\input{preamble/deckblatt_pflichtexemplare}
+\fi
+
+\ifdefined\VORLEGEN
+\else
+	\thispagestyle{empty}
+	\input{preamble/impressum}
+	\cleardoublepage
+\fi
+
+\frontmatter	% Beginn des Vorspanns / Begin of the prefix   
+
+\ifdefined\ZWEISEITIG
+	\ohead{\headmark}
+	\automark[section]{chapter}
+\else 
+	\chead{}
+	\cfoot*{}
+	\ohead{\headmark}
+	\ofoot*{\pagemark}
+	\automark[chapter]{chapter}
+\fi
+
+
+\ifdefined\VORLEGEN
+\cleardoublepage
+\else
+	\chapter*{Vorwort}
+	\input{preamble/vorwort}
+	\cleardoublepage
+\fi
+
+\chapter*{Zusammenfassung}
+\input{preamble/zusammenfassung}
+\cleardoublepage
+
+\chapter*{Summary}
+\input{preamble/summary}

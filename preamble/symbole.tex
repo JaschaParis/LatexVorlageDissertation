@@ -1,0 +1,30 @@
+% !TeX encoding = UTF-8
+% !TeX spellcheck = de_DE
+% !TeX root = ../thesis.tex
+% Formula symbols
+\chapter*{Formelzeichen und Abkürzungen}
+
+\manualmark
+\chead{}
+\ohead{Formelzeichen und Abkürzungen}
+\cfoot{}
+\ofoot*{\pagemark}
+\addcontentsline{toc}{chapter}{Formelzeichen und Indizes}
+
+In dieser Arbeit wird die folgende Notation für die mathematische Darstellung verwendet: Vektoren erhalten einen Vektorpfeil, vergleiche Vektor \vec{v}, Matrizen werden groß und fett gedruckt, vergleiche Matrix \mat{A}, und komplexe Zahlen werden unterstrichen dargestellt, vergleiche komplexe Zahl \cx{z}. Sollen andere Darstellungen verwendet werden, kann die Definition von \texttt{\textbackslash vec} und \texttt{\textbackslash mat} in der Präambel verändert werden. 
+
+\ifdefined\BUILDGLOSSARIES
+	\setglossarysection{section}
+	\printglossary[type=latin_symbols, style=symbols, title=Lateinische Formelzeichen]
+	\newpage
+	\printglossary[type=greek_symbols, style=symbols, title=Griechische Formelzeichen]
+	\newpage
+	\printglossary[type=indices, style=indices, title=Indizes]
+	\newpage
+	\printglossary[type=akronym, style=akronym, title=Abkürzungen]
+\else 
+\fi
+
+\newpage\section*{Abbildungslegende}
+
+Hier könnte noch eine Abbildungslegende eingefügt werden.

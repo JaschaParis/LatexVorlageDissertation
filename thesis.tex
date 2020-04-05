@@ -1,0 +1,121 @@
+%&DissertationPreamble
+
+%% Dynamische Preamble: Ändern der Kompilierungsoptionen durch ein oder auskommentieren.
+
+%Include Tikz: In der finalen Version sind Formelzeichen auch in Bildern verlinkt und die Datei wird insgesamt kleiner.
+\newcommand{\INCLUDETIKZ}{}
+
+%Build Glossaries: Die Symbolverzeichnisse werden erstellt, jedoch dauert das kompilieren länger
+\newcommand{\BUILDGLOSSARIES}{}
+
+%Vorlegen: Die Vorlage-Version ist die Korrekturversion. Sie enthält ein anderes Deckblatt und wird einseitig gedruckt. Ebenfalls wird das Vorwort nicht eingebunden.
+%\newcommand{\VORLEGEN}{}		% choose this for the correction version
+
+
+%% Satzeinstellungen:
+\tolerance		= 450 				% Weissraum, default 1000
+\pretolerance   = 100   			% default 100
+\clubpenalty 	= 4000 				% Waisenkind
+\widowpenalty 	= 4000 				% Witwe
+\renewcommand\ngermanhyphenmins{23} % Trennungen nach x Buchstaben links und nach y rechts, default 23
+\hyphenpenalty = 150 				% Trennungsbestrafung, default 50
+
+% PDF Metadaten
+\hypersetup{%
+	pdfauthor={\autor},
+	pdftitle={\titel},
+	pdfkeywords={Mein Stichwort}}
+
+% Literaturdatei
+\addbibresource{references/references.bib} 
+
+% Show only DOI OR ISBN (sonst redundant)
+\AtEveryBibitem{%
+	\iffieldundef{doi}
+	{}
+	{\clearfield{issn}%
+		\clearfield{isbn}}%
+}
+
+% Wenn finale Version, zweiseitig
+\ifdefined\VORLEGEN
+\else 
+\newcommand{\ZWEISEITIG}{}
+\fi
+
+\input{template/setGlossariesDissertation}
+% Wenn baue Symbolverzeichne, makeglossaries
+\ifdefined\BUILDGLOSSARIES
+\makeglossaries
+\else 
+\fi
+
+% Dokument
+\begin{document}
+
+% Binde Cover ein
+\pagenumbering{Alph}
+\includepdf[pages=1]{tikz/Cover.pdf}
+\cleardoublepage
+
+% Binde Preamble ein
+\include{preamble/preamble}
+
+\cleardoublepage
+
+\pdfbookmark[1]{\contentsname}{toc}
+\tableofcontents					% Inhaltsverzeichnis / Table of contents
+
+\cleardoublepage
+\input{preamble/symbolliste}
+\input{preamble/symbole}			%  Formelzeichenverzeichnis / List of symbols
+\cleardoublepage
+
+% Inhalt / Contents
+\mainmatter		% Beginn des Hauptteils / Begin of the main body
+
+% Setze Headmarks für ein oder zweiseitig
+\ifdefined\ZWEISEITIG
+	\ohead{\headmark}
+	\automark[section]{chapter}
+\else 
+	\chead{}
+	\cfoot*{}
+	\ohead{\headmark}
+	\ofoot*{\pagemark}
+	\automark[chapter]{chapter}
+\fi
+
+\input{content/content}
+
+\cleardoublepage
+%\pagenumbering{Roman} %if you prefer roman numbers in appendix
+
+% Bei den Studierenden bedanken!
+\input{content/studentsthesis}
+\cleardoublepage
+
+\tolerance 5000 % seit gutmütig zu dem Literaturverzeichnis
+\begin{spacing}{0.85}
+\raggedright{%
+\printbibliography} % Literaturverzeichnis
+\end{spacing}
+
+\tolerance 200 % sei wieder etwas strenger
+
+\listoftables						% Tabellenverzeichnis
+\cleardoublepage
+\listoffigures						% Abbildungsverzeichnis
+
+% Anhang
+\appendix
+\addtocontents{toc}{\protect\newpage}
+\input{appendix/appendix}
+\backmatter
+
+% Buchruecken
+\cleardoublepage
+\includepdf[pages=1]{tikz/CoverBack.pdf}
+
+
+\end{document}

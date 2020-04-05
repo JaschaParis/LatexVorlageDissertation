@@ -1,0 +1,54 @@
+\ProvidesPackage{DissertationFontPackage}[2020/01/01]
+
+% Es gibt ein eigenes Schriftenpaket, damit dieses sowohl bei Tikz als auch beim Hauptdokument eingebunden werden kann.
+
+%%%% START Font choices
+%% Times for rm and math | Helvetica for ss | Courier for tt
+\usepackage{newtxtext,newtxmath} % rm & math
+\usepackage{newtxtext} % rm & math
+\usepackage[scaled=0.90]{helvet} % ss
+\usepackage{courier} % tt
+%%%% END Font choices
+
+\RequirePackage[T1]{fontenc} % T1-kodierte Schriften
+\RequirePackage[final,activate,verbose=warnings,auto=true,babel]{microtype} % Bessere Typografie
+
+%	Mathematik-Modus
+\RequirePackage[intlimits]{mathtools} % Fuer Mathematikformeln; läd amsmath
+\RequirePackage{mathrsfs}
+\RequirePackage{amssymb}
+\RequirePackage{amsxtra}
+
+\newcommand\bmmax{2}
+\RequirePackage{bm}	% Fettschrift fuer Matrizen und Vektoren 
+\RequirePackage{ziffer}
+\RequirePackage{siunitx} % Satz für Einheiten
+\sisetup{locale=DE}
+\sisetup{per-mode = fraction}
+\sisetup{range-phrase = -}
+\sisetup{range-units = single}
+\sisetup{detect-all}
+\RequirePackage[b]{esvect}
+\RequirePackage{accents}
+\allowdisplaybreaks
+
+%	Mathematikbefehle 
+\DeclareRobustCommand{\bunderline}[2][4]{\underline{#2\mkern-#1mu}\mkern#1mu }
+\DeclareRobustCommand{\wfrac}[2]{\frac{\medspace #1 \medspace}{\medspace #2 \medspace}}
+\DeclareRobustCommand*\dif{\mathop{}\!\mathrm{d}} % d in Differenzen
+\DeclareRobustCommand*\diag{\mathop{}\!\mathrm{diag}} % Diagonalmatrizen
+\DeclareRobustCommand*\scos[1]{\mathop{}\!\mathrm{c}_{#1}} % Kurzcosinus
+\DeclareRobustCommand*\ssin[1]{\mathop{}\!\mathrm{s}_{#1}} % Kurzsinus
+\DeclareRobustCommand*\jj{\operatorname*{j}} % Komplexe Zahl
+\DeclareRobustCommand*\ii{\operatorname*{i}} % Komplexe Zahl
+\DeclareRobustCommand{\vec}[1]{\ensuremath{\protect\vv{#1}}} % Mein Vektor
+\DeclareRobustCommand{\vecind}[2]{\ensuremath{\vv{#1}_{\hspace{-2pt}#2}}} % Vektor mit Index
+\DeclareRobustCommand{\vind}[1]{\ensuremath{_{\hspace{-2pt}#1}}}
+\DeclareRobustCommand{\vecnorm}[1]{\ensuremath{\left\| #1 \right\|_2}} %V Vektornorm
+\DeclareRobustCommand{\mat}[1]{\ensuremath{\mathbf{#1}}} % Meine Matrix
+\DeclareRobustCommand{\cx}[1]{\ensuremath{\bunderline[2]{#1}}}
+\DeclareRobustCommand{\KOS}[2]{\ensuremath{\prescript{#1}{}{#2}}}
+\DeclareRobustCommand{\tind}[1]{\ensuremath{_\textit{#1}}} % Textindex
+\DeclareRobustCommand{\abs}[1]{\ensuremath{\left| {#1} \right| }} %Absolutwert
+\DeclareRobustCommand{\overbar}[1]{\mkern 1.5mu\overline{\mkern-1.5mu#1\mkern-1.5mu}\mkern 1.5mu}
+\DeclareMathOperator{\sgn}{sgn}

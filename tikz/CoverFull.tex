@@ -1,0 +1,50 @@
+%&../TikZPreamble
+\ifdefined\INCLUDETIKZ
+\else 
+	\input{../preamble/symbolliste}
+	\begin{document}
+\fi
+\begin{tikzpicture}[auto,font=\footnotesize]
+% % % % % % % % % % % % % % % % % % % % % % % % %
+\newcommand{\ruecken}{15.5563mm}
+\newcommand{\aufschlag}{4.2464mm}
+
+\node [inner sep=0, outer sep=0, anchor=center] (nullpunkt_back) at (0,0) {};
+\node [inner sep=0, outer sep=0, anchor=center] (maxpunkt_back) at (210,297) {};
+\node [inner sep=0, outer sep=0, anchor=center] (backtext) at (105,257) {};
+\node [inner sep=0, outer sep=0, anchor=center] (qrcodepos) at (105,30) {};
+
+\node [inner sep=0, outer sep=0, anchor=center] (nullpunkt_ruecken) at ($(210,0) + (0,0)$) {};
+\node [inner sep=0, outer sep=0, anchor=center] (maxpunkt_ruecken) at ($(maxpunkt_back) + (\ruecken,0)$) {};
+
+\node [inner sep=0, outer sep=0, anchor=center] (nullpunkt_front) at ($(210,0) + (\ruecken,0)$) {};
+\node [inner sep=0, outer sep=0, anchor=center] (maxpunkt_front) at ($(maxpunkt_ruecken) + (210,0)$) {};
+
+\node [inner sep=0, outer sep=0, anchor=center] (nullpunkt_aufschlag) at ($(nullpunkt_back) - (\aufschlag,\aufschlag)$) {};
+\node [inner sep=0, outer sep=0, anchor=center] (maxpunkt_aufschlag) at ($(maxpunkt_front) + (\aufschlag,\aufschlag)$) {};
+
+%\draw [draw=orange] (nullpunkt_back) rectangle (maxpunkt_back);
+%\draw [draw=blue] (nullpunkt_ruecken) rectangle (maxpunkt_ruecken);
+%\draw [draw=green] (nullpunkt_front) rectangle (maxpunkt_front);
+%\draw [draw=pink] (nullpunkt_aufschlag) rectangle (maxpunkt_aufschlag);
+
+\input{content/cover_front_content}
+
+\node [anchor=north east, minimum height=\ruecken, minimum width=60mm, text=weiss, text width=50mm, rotate=90, align=center] (Institut_ruecken) at (maxpunkt_ruecken -| nullpunkt_ruecken) {\textsf{\institute}};
+
+\node [anchor=center, text=RWTHblau, text width=150mm, rotate=90, align=center,font=\Large] (rueckentext) at ($(nullpunkt_ruecken)!0.5!(maxpunkt_ruecken)$) {\textsf{\titel}};
+
+\node [anchor=west, text=RWTHblau, rotate=90, align=center,font=\Large] (rueckenautor) at ($(nullpunkt_ruecken) + (\ruecken/2,10)$) {\textsf{\autor}};
+
+\input{content/cover_back_content}
+
+\begin{scope}[on background layer]
+	\draw [draw=none,fill=RWTHblau] (Institut.south west) rectangle (maxpunkt_aufschlag -| nullpunkt_ruecken);
+	\draw [draw=none,fill=RWTHblau] (Name.south west) rectangle (Name.north east -| maxpunkt_aufschlag);
+\end{scope}
+% % % % % % % % % % % % % % % % % % % % % % % % %
+\end{tikzpicture}
+\ifdefined\INCLUDETIKZ
+\else 
+\end{document}
+\fi

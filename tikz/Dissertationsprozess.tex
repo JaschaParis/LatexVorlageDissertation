@@ -1,0 +1,56 @@
+%&../TikZPreamble
+\ifdefined\INCLUDETIKZ
+\else 
+	\input{../preamble/symbolliste}
+	\begin{document}
+\fi
+\begin{tikzpicture}[auto,font=\footnotesize]
+% % % % % % % % % % % % % % % % % % % % % % % % %
+
+\newcommand{\figureheight}{100}
+\newcommand{\fieldwidth}{60mm}
+\newcommand{\fielddistance}{5mm}
+\newcommand{\fielddistancehor}{15mm}
+
+
+\node at (0,0) (AbstandFuerSchatten) {};
+
+\node [feldCNTRL, minimum width=\fieldwidth] (f1) at (0,0)  {Dissertation online veröffentlichen};
+\node [feldCNTRL, above=\fielddistance of f1, minimum width=\fieldwidth] (f2) {Dissertation drucken};
+\node [feldCNTRL, above=\fielddistance of f2, minimum width=\fieldwidth] (f3) {Dissertation einreichen};
+\node [feldCNTRL, above=\fielddistance of f3, minimum width=\fieldwidth] (f4) {Abbildungen};
+\node [feldCNTRL, above=\fielddistance of f4, minimum width=\fieldwidth] (f5) {Literaturstellen};
+\node [feldCNTRL, above=\fielddistance of f5, minimum width=\fieldwidth] (f6) {Formeln mit Formelzeichen z.B.\ \gls{x}\vind{\gls{soll}}};
+\node [feldCNTRL, above=\fielddistance of f6, minimum width=\fieldwidth] (f7) {Forschungsarbeit};
+\node [above=1mm of f7] (lbl_Prozess) {Erstellung einer Dissertation};
+
+\draw [vektor] (f2) -- (f1);
+\draw [vektor] (f3) -- (f2);
+\draw [vektor] (f4) -- (f3);
+\draw [vektor] (f5) -- (f4);
+\draw [vektor] (f6) -- (f5);
+\draw [vektor] (f7) -- (f6);
+
+\node [feldCNTRL, fill=RWTHblau!25, right=\fielddistancehor of f2, minimum width=\fieldwidth] (fcomment2) {Kommentiere \texttt{\textbackslash VORLEGEN} aus};
+
+\node [feldCNTRL, fill=RWTHblau!25, right=\fielddistancehor of f3, minimum width=\fieldwidth] (fcomment3) {Kommentiere \texttt{\textbackslash VORLEGEN} ein};
+\node [feldCNTRL, fill=RWTHblau!25, right=\fielddistancehor of f4, minimum width=\fieldwidth] (fcomment4) {Direkte Einbindung von TikZ \\ und PDF je nach \texttt{\textbackslash INCLUDETIKZ}};
+\node [feldCNTRL, fill=RWTHblau!25, right=\fielddistancehor of f5, minimum width=\fieldwidth] (fcomment5) {Angabe von Seitenzahlen};
+\node [feldCNTRL, fill=RWTHblau!25, right=\fielddistancehor of f6, minimum width=\fieldwidth] (fcomment6) {Super Satz und Symbolverzeichnis \\ mit Seitenzahlen};
+
+\node [draw,dashed,fit=(fcomment4)(fcomment6), rounded corners, thick] {};
+
+\draw [vektor,<->] (fcomment2.west) -- (fcomment2.west -| f2.east);
+\draw [vektor,<->] (fcomment3.west) -- (fcomment3.west -| f3.east);
+\draw [vektor,<->] (fcomment4.west) -- (fcomment4.west -| f4.east);
+\draw [vektor,<->] (fcomment5.west) -- (fcomment5.west -| f5.east);
+\draw [vektor,<->] (fcomment6.west) -- (fcomment6.west -| f6.east);
+
+\draw [draw=none] (lbl_Prozess.east) -| node [anchor=center] (lbl_Vorlage) {Diese Vorlage} (fcomment4.north);
+	 
+% % % % % % % % % % % % % % % % % % % % % % % % %
+\end{tikzpicture}
+\ifdefined\INCLUDETIKZ
+\else 
+\end{document}
+\fi
