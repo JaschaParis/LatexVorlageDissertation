@@ -4,11 +4,11 @@ starttime=$(date +%s.%N)
 
 echo "### Delete Files ###"
 
-./Script_clean.sh
+./scripts/Script_clean.sh
 
 echo "### Precompile Preamble ###"
 
-./Script_precompile.sh
+./scripts/Script_precompile.sh
 
 echo "### Finished: Precompile Preamble ###"
 
