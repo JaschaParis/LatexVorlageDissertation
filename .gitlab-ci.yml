@@ -1,0 +1,17 @@
+image: igm-git.igm.rwth-aachen.de:4999/it/latex/igmr-package
+
+build:
+  stage: build
+  script:
+    - echo 'Make Bash Scripts executable'
+    - chmod u+x scripts/build.bash
+    - chmod u+x scripts/clean.bash
+    - chmod u+x scripts/create.bash
+    - chmod u+x scripts/precompile.bash
+    - echo 'Run Pipeline Build'
+    - ./scripts/create.bash
+    - echo 'Move pdf in root directory for easy access'
+    - mv build/thesis.pdf Thesis.pdf
+  artifacts:
+    paths:
+      - Thesis.pdf
