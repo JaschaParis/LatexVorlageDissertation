@@ -4,11 +4,11 @@ starttime=$(date +%s.%N)
 
 echo "### Delete Files ###"
 
-./scripts/clean.sh
+./scripts/clean.bash
 
 echo "### Precompile Preamble ###"
 
-./scripts/precompile.sh
+./scripts/precompile.bash
 
 echo "### Finished: Precompile Preamble ###"
 
@@ -16,11 +16,11 @@ echo "### Create TikZ Figures ###"
 
 cd tikz/
 
-./Script_compile_figures.sh
+./Script_compile_figures.bash
 
-#./Script_compile_figures.sh
+#./Script_compile_figures.bash
 
-#./Script_compile_figures.sh
+#./Script_compile_figures.bash
 
 cd ..
 
