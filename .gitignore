@@ -1,3 +1,10 @@
+### Directories
+build/
+
+### JabRef Backups & Autosavings
+*.bak
+*.sav
+
 ### General Latex
 *.tmp
 *.toc
