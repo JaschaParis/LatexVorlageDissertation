@@ -61,7 +61,6 @@
 				"tools": [
 					"pdflatex_precompile_preamble",
 					"pdflatex_precompile_preamble_tikz",
-					"pdflatex_precompile_preamble_figures"
 				]
 			},
 			{
@@ -71,19 +70,11 @@
 				]
 			},
 			{
-				"name": "Compile Figures",
-				"tools": [
-					"pdflatex_precompile_figures"
-				]
-			},
-			{
-				"name": "Compile Preambles ➞ Compile TikZ ➞ Compile Figures ➞ Compile Document",
+				"name": "Compile Preambles ➞ Compile TikZ ➞ Compile Document",
 				"tools": [
 					"pdflatex_precompile_preamble",
 					"pdflatex_precompile_preamble_tikz",
-					"pdflatex_precompile_preamble_figures",
 					"pdflatex_precompile_tikz",
-					"pdflatex_precompile_figures",
 					"latexmk_document"
 				]
 			}
@@ -98,7 +89,7 @@
 					"-file-line-error",
 					"-output-directory=%OUTDIR%/preamble",
 					"-jobname=\"preamble\"",
-					"&pdflatex preamble/preamble.tex\\dump"
+					"&pdflatex DissertationPreamble.tex\\dump"
 				],
 				"env": {}
 			},
@@ -111,20 +102,7 @@
 					"-file-line-error",
 					"-output-directory=%OUTDIR%/preamble",
 					"-jobname=\"preamble_tikz\"",
-					"&pdflatex preamble/preamble_tikz.tex\\dump"
-				],
-				"env": {}
-			},
-			{
-				"name": "pdflatex_precompile_preamble_figures",
-				"command": "pdflatex",
-				"args": [
-					"-ini",
-					"-recorder",
-					"-file-line-error",
-					"-output-directory=%OUTDIR%/preamble",
-					"-jobname=\"preamble_figures\"",
-					"&pdflatex preamble/preamble_figures.tex\\dump"
+					"&pdflatex TikZPreamble.tex\\dump"
 				],
 				"env": {}
 			},
@@ -164,7 +142,7 @@
 					"-pdf",
 					"-f",
 					"-outdir=%OUTDIR%",
-					"main"
+					"thesis"
 				],
 				"env": {}
 			},
@@ -179,7 +157,7 @@
 					"-time",
 					"-pdf",
 					"-outdir=%OUTDIR%",
-					"main"
+					"thesis"
 				],
 				"env": {}
 			}
