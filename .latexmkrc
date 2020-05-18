@@ -8,10 +8,12 @@ $clean_ext .= "xdy slo glsdefs run.xml glo gls glg akronym-glo akronym-gls akron
    
 sub makeglossaries {
       if ( $silent ) {
-		system "makeglossaries -q $_[0]";
+		print "$_[0]";
+		system "makeglossaries -d build -q thesis";
 	  }
 	  else {
-		system "makeglossaries $_[0]";
+		print "$_[0]";
+		system "makeglossaries -d build thesis";
 	  };
 	if ( -z "$_[0].glo" ) {
 		print "Latexmk: Empty glo file, I am making dummy gls file\n";
