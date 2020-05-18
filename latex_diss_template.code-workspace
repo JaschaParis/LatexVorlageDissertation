@@ -40,7 +40,9 @@
 			"*.xml",
 			"*.synctex.gz",
 			"*.fmt",
-			"*.pgf"
+			"*.pgf",
+			"*.mw",
+			"*.glsdefs"
 		],
 		"latex-workshop.latex.recipes": [
 			{
