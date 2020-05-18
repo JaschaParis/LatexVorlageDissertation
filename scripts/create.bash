@@ -14,15 +14,7 @@ echo "### Finished: Precompile Preamble ###"
 
 echo "### Create TikZ Figures ###"
 
-cd tikz/
-
-./Script_compile_figures.bash
-
-#./Script_compile_figures.bash
-
-#./Script_compile_figures.bash
-
-cd ..
+./scripts/compile_tikz.bash
 
 echo "### Finished: Create TikZ Figures ###"
 
