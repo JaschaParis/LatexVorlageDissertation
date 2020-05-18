@@ -42,7 +42,12 @@
 			"*.fmt",
 			"*.pgf",
 			"*.mw",
-			"*.glsdefs"
+			"*.glsdefs",
+			"*-glg",
+			"*-glo",
+			"*-gls",
+			"*.slo",
+			"*.xdy"
 		],
 		"latex-workshop.latex.recipes": [
 			{
