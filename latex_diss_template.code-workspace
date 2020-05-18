@@ -1,0 +1,181 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"latex-workshop.latex.autoBuild.run": "never",
+		"latex-workshop.latex.outDir": "%DIR%/build",
+		"latex-workshop.latex.recipe.default": "first",
+		"latex-workshop.latexindent.path": "C:\\Program Files (x86)\\texlive\\2016\\bin\\win32\\latexindent.exe",
+		"latex-workshop.view.pdf.external.viewer.command": "C:\\Program Files (x86)\\Adobe\\Acrobat Reader DC\\Reader\\AcroRd32.exe",
+		"latex-workshop.latex.clean.subfolder.enabled": true,
+		"latex-workshop.latex.clean.fileTypes": [
+			"*.aux",
+			"*.bbl",
+			"*.blg",
+			"*.idx",
+			"*.ind",
+			"*.lof",
+			"*.lot",
+			"*.out",
+			"*.toc",
+			"*.acn",
+			"*.acr",
+			"*.alg",
+			"*.glg",
+			"*.glo",
+			"*.gls",
+			"*.fls",
+			"*.log",
+			"*.fdb_latexmk",
+			"*.snm",
+			"*.synctex(busy)",
+			"*.synctex.gz(busy)",
+			"*.nav",
+			"*.pdf",
+			"*.bcf",
+			"*.loa",
+			"*.xml",
+			"*.synctex.gz",
+			"*.fmt",
+			"*.pgf"
+		],
+		"latex-workshop.latex.recipes": [
+			{
+				"name": "Compile Document",
+				"tools": [
+					"latexmk_document"
+				]
+			},
+			{
+				"name": "Compile Preambles",
+				"tools": [
+					"pdflatex_precompile_preamble",
+					"pdflatex_precompile_preamble_tikz",
+					"pdflatex_precompile_preamble_figures"
+				]
+			},
+			{
+				"name": "Compile TikZ",
+				"tools": [
+					"pdflatex_precompile_tikz"
+				]
+			},
+			{
+				"name": "Compile Figures",
+				"tools": [
+					"pdflatex_precompile_figures"
+				]
+			},
+			{
+				"name": "Compile Preambles ➞ Compile TikZ ➞ Compile Figures ➞ Compile Document",
+				"tools": [
+					"pdflatex_precompile_preamble",
+					"pdflatex_precompile_preamble_tikz",
+					"pdflatex_precompile_preamble_figures",
+					"pdflatex_precompile_tikz",
+					"pdflatex_precompile_figures",
+					"latexmk_document"
+				]
+			}
+		],
+		"latex-workshop.latex.tools": [
+			{
+				"name": "pdflatex_precompile_preamble",
+				"command": "pdflatex",
+				"args": [
+					"-ini",
+					"-recorder",
+					"-file-line-error",
+					"-output-directory=%OUTDIR%/preamble",
+					"-jobname=\"preamble\"",
+					"&pdflatex preamble/preamble.tex\\dump"
+				],
+				"env": {}
+			},
+			{
+				"name": "pdflatex_precompile_preamble_tikz",
+				"command": "pdflatex",
+				"args": [
+					"-ini",
+					"-recorder",
+					"-file-line-error",
+					"-output-directory=%OUTDIR%/preamble",
+					"-jobname=\"preamble_tikz\"",
+					"&pdflatex preamble/preamble_tikz.tex\\dump"
+				],
+				"env": {}
+			},
+			{
+				"name": "pdflatex_precompile_preamble_figures",
+				"command": "pdflatex",
+				"args": [
+					"-ini",
+					"-recorder",
+					"-file-line-error",
+					"-output-directory=%OUTDIR%/preamble",
+					"-jobname=\"preamble_figures\"",
+					"&pdflatex preamble/preamble_figures.tex\\dump"
+				],
+				"env": {}
+			},
+			{
+				"name": "pdflatex_precompile_tikz",
+				"command": "latexmk",
+				"args": [
+					"-pdf",
+					"-time",
+					"-silent",
+					"-output-directory=%OUTDIR%/tikz",
+					"tikz/*.tex"
+				],
+				"env": {}
+			},
+			{
+				"name": "pdflatex_precompile_figures",
+				"command": "latexmk",
+				"args": [
+					"-pdf",
+					"-time",
+					"-silent",
+					"-output-directory=%OUTDIR%/figures",
+					"figures/*.tex"
+				],
+				"env": {}
+			},
+			{
+				"name": "latexmk_document_force",
+				"command": "latexmk",
+				"args": [
+					"-synctex=1",
+					"-interaction=nonstopmode",
+					"-file-line-error",
+					"-silent",
+					"-time",
+					"-pdf",
+					"-f",
+					"-outdir=%OUTDIR%",
+					"main"
+				],
+				"env": {}
+			},
+			{
+				"name": "latexmk_document",
+				"command": "latexmk",
+				"args": [
+					"-synctex=1",
+					"-interaction=nonstopmode",
+					"-file-line-error",
+					"-silent",
+					"-time",
+					"-pdf",
+					"-outdir=%OUTDIR%",
+					"main"
+				],
+				"env": {}
+			}
+		]
+	}
+}
