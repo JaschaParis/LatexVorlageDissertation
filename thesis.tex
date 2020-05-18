@@ -9,7 +9,16 @@
 \newcommand{\BUILDGLOSSARIES}{}
 
 % Vorlegen: Die Vorlage-Version ist die Korrekturversion. Sie enthält ein anderes Deckblatt und wird einseitig gedruckt. Ebenfalls wird das Vorwort nicht eingebunden.
+\newcommand{\VORLEGEN}{}		% choose this for the correction version
+% @Jascha: Please also edit DissertationPreamble and change 'twoside' to 'false'
 
+% Wenn finale Version, zweiseitig
+\ifdefined\VORLEGEN
+\else 
+\newcommand{\ZWEISEITIG}{}
+\fi
+
+\usepackage{blindtext}
 
 %% Satzeinstellungen:
 \tolerance		= 450 				% Weissraum, default 1000
@@ -35,12 +44,6 @@
 	{\clearfield{issn}%
 		\clearfield{isbn}}%
 }
-
-% Wenn finale Version, zweiseitig
-\ifdefined\VORLEGEN
-\else 
-\newcommand{\ZWEISEITIG}{}
-\fi
 
 \input{template/setGlossariesDissertation}
 % Wenn baue Symbolverzeichne, makeglossaries
