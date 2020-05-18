@@ -2,14 +2,12 @@
 
 %% Dynamische Preamble: Ändern der Kompilierungsoptionen durch ein oder auskommentieren.
 
-%Include Tikz: In der finalen Version sind Formelzeichen auch in Bildern verlinkt und die Datei wird insgesamt kleiner.
+% Include Tikz: In der finalen Version sind Formelzeichen auch in Bildern verlinkt und die Datei wird insgesamt kleiner.
 \newcommand{\INCLUDETIKZ}{}
 
-%Build Glossaries: Die Symbolverzeichnisse werden erstellt, jedoch dauert das kompilieren länger
-%\newcommand{\BUILDGLOSSARIES}{}
+% Build Glossaries: Die Symbolverzeichnisse werden erstellt, jedoch dauert das kompilieren länger
 
-%Vorlegen: Die Vorlage-Version ist die Korrekturversion. Sie enthält ein anderes Deckblatt und wird einseitig gedruckt. Ebenfalls wird das Vorwort nicht eingebunden.
-%\newcommand{\VORLEGEN}{}		% choose this for the correction version
+% Vorlegen: Die Vorlage-Version ist die Korrekturversion. Sie enthält ein anderes Deckblatt und wird einseitig gedruckt. Ebenfalls wird das Vorwort nicht eingebunden.
 
 
 %% Satzeinstellungen:
@@ -58,7 +56,7 @@
 \includepdf[pages=1]{tikz/cover_front.pdf}
 \cleardoublepage
 
-% Binde Preamble ein
+% Binde dynamische Preamble ein
 \include{preamble/preamble}
 
 \cleardoublepage
