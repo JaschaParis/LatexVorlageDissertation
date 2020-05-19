@@ -1,23 +1,23 @@
 \ProvidesPackage{DissertationPackage}[2020/01/01]
 
-% Latex erlauben mehr Dateien als üblich zu öffnen. Dies wird für die vielen Symbolverzeichnisse benötigt
+%% Allow LaTeX to open more files at the same time than usual. Required for creating glossaries
 \RequirePackage{morewrites}
 \morewritessetup{allocate=11}
-%\morewritessetup { allocate = 11 }
 
-\RequirePackage[setspace=true]{scrhack} 	% Zusammenspiel von einigen Paketen mit KOMA-Script
+%% Interaction of some packages with the KOMA-Script package
+\RequirePackage[setspace=true]{scrhack} 	
 
-% Schriftarten
+%% Fonts
 \RequirePackage{packages/DissertationFontPackage}
 
-% Sprache, Schrift und Text / Language, font and text
-\RequirePackage[ngerman]{babel}          		% Rechtschreibunterstuetzung
+
+%% Language, font and text
+\RequirePackage[ngerman]{babel}          		% Spelling assistance
 \RequirePackage{hyphenat} 
-\RequirePackage[autostyle]{csquotes} 			% Deutsche Anfuehrungszeichen 
+\RequirePackage[autostyle]{csquotes} 			% German Quatation Marks
 
 
-
-% Layout der Seiten / Layout of the pages
+%% Layout of the pages
 \addtokomafont{chapter}{\rmfamily\bfseries}
 \addtokomafont{section}{\rmfamily\bfseries}
 \addtokomafont{subsection}{\rmfamily\bfseries}
@@ -26,60 +26,82 @@
 \renewcommand*{\sectfont}{\rmfamily\bfseries}
 
 
-% Zeilenabstand, Kopf- und Fusszeilen / Line spacing, header and footer
-\RequirePackage{setspace}					% Zeilenabstand 
-\onehalfspacing								% eineinhalbfacher Zeilenabstand, idR bei Dissertationen gewuenscht
-\RequirePackage[automark, headsepline]{scrlayer-scrpage} % Kopf- und Fusszeilen
+%% Line spacing, header and footer
+\RequirePackage{setspace}									% Line spacing 
+\onehalfspacing												% One and a hilf times line spacing, usually desired for dissertations
+\RequirePackage[automark, headsepline]{scrlayer-scrpage} 	% Header ans footers
 \pagestyle{scrheadings}
 
-% 
+
+%% KOMA Script Options
 \KOMAoptions{singlespacing=true}
 \KOMAoptions{DIV=last}
 
 
-% Tabellen
-\RequirePackage{booktabs}		 				% Schoene horizontale Linien
-\RequirePackage{multirow}		 				% Spalten und Zeilen weiter unterteilen 
-\RequirePackage{rccol}			 				% Ausrichtung von Spalten am Dezimalzeichen
+%% Tables
+\RequirePackage{booktabs}		 				% Appealing horizontal lines
+\RequirePackage{multirow}		 				% Allow further division of columns and rows
+\RequirePackage{rccol}			 				% Alignment of columns to the decimal point
 
-% Grafiken
-\RequirePackage{graphicx} % Zum Einbinden von Grafiken 
-\RequirePackage[font=footnotesize]{subcaption} % Unterabbildungen
+
+%% Graphics
+\RequirePackage{graphicx} 						% For embedding graphics
+\RequirePackage[font=footnotesize]{subcaption} 	% Enabling Subfigures
 \RequirePackage{here}
-\RequirePackage[hyperref]{xcolor} %table, natural
+\RequirePackage[hyperref]{xcolor} 				%table, natural
 
-% Literaturverzeichnis mit Angabe der Seitenzahlen bei denen das Zitat auftaucht
-\RequirePackage[backend			= biber,citestyle = ZitierstilMaschinenbau,bibstyle = ZitierstilMaschinenbau, giveninits = true, uniquename = init,isbn = true, maxnames = 99, minalphanames = 3, url = false, doi = true, block = space, sorting=anyt, sortlocale=de_DE, backref=true, backrefstyle=all+]{biblatex}
 
-% PDF Erstellung / PDF creation 
-\PassOptionsToPackage{hyphens}{url} %Umbrüche nach '-' erlauben
+%% Bibliography
+%  with indication of the page numbers where the quotation appears
+\RequirePackage[backend 		= biber,
+				citestyle 		= ZitierstilMaschinenbau,
+				bibstyle 		= ZitierstilMaschinenbau, 
+				giveninits 		= true, 
+				uniquename 		= init,
+				isbn 			= true, 
+				maxnames 		= 99, 
+				minalphanames 	= 3, 
+				url 			= false, 
+				doi 			= true, 
+				block 			= space, 
+				sorting			= anyt, 
+				sortlocale		= de_DE, 
+				backref			= true, 
+				backrefstyle	=all+]{biblatex}
+
+
+% PDF creation 
+\PassOptionsToPackage{hyphens}{url} 		% Allow breaks after '-' for URLs
 \RequirePackage[]{hyperref}
-\hypersetup{%
-	pdftex,
-	pdfsubject={Dissertation},
-	pdfproducer={Latex, Vorlage: J.N. Paris},
-	pdfcreator={pdflatex, github.com/JaschaParis/LatexVorlageDissertation},		
-	pdfborder			={0 0 0},			% Unterdruecken der PDF Rahmen/ Avoid borders in PDF
-	colorlinks			= false,			% Setzen der Textfarbe / Set text color
-	breaklinks = true,
-	bookmarksnumbered	= true}
+\hypersetup{pdftex,
+		    pdfsubject			= {Dissertation},
+		    pdfproducer			= {Latex, Vorlage: J.N. Paris},
+		    pdfcreator			= {pdflatex, github.com/JaschaParis/LatexVorlageDissertation},		
+		    pdfborder			= {0 0 0},			% Avoid borders in PDF
+		    colorlinks			= false,			% Set text color
+		    breaklinks 			= true,
+		    bookmarksnumbered	= true
+}
 
-% Definition der Abbildungsunterschriften	
+
+% Definition of captions
 \RequirePackage[format 			= hang,
-			textformat 		= simple, % no modifications, period = full stop at the end
-			justification 	= justified,
-			font 			= {footnotesize}, % stretch =1.25},
-			labelfont 		= {bf},
-			parskip			= 24pt,
-			hypcap=true, %springe an den Anfang einer Float-Umgebung beim Link
-			aboveskip 		= 6pt %,
-			]{caption}       	% mehrzeilige Captions ausrichten / adjust multiline captions
+			    textformat 		= simple, 			% no modifications, period = full stop at the end
+			    justification 	= justified,
+			    font 			= {footnotesize}, 	% stretch =1.25},
+			    labelfont 		= {bf},
+			    parskip			= 24pt,
+			    hypcap			= true, 			% Jump to the beginning of a float environment at the link
+			    aboveskip 		= 6pt 				%,
+			    ]{caption}       					% Adjust multiline captions
 \captionsetup[subfigure]{labelformat=parens,labelsep=space}
 
-% Einbinden von PDF Seiten
+
+% Embedding of PDF pages
 \RequirePackage{pdfpages}
 
-% Definition von Trennungen fuer URLs
+
+% Definition for breaks regarding URLs
 \makeatletter
 \g@addto@macro\UrlBreaks{
 	\do\a\do\b\do\c\do\d\do\e\do\f\do\g\do\h\do\i\do\j
@@ -92,32 +114,32 @@
 \Urlmuskip = 0mu plus 0.5mu
 
 
-%	Abkuerzungs- und Formelverzeichnis / List of abbreviations and and formulas
-\RequirePackage[%
-%		acronym,% 				Abkürzungen
-		symbols,% 				Formelzeichen
-		nomain,% 				kein Glossar
-		nogroupskip,% 			Automatischer Abstand zw. Gruppen
-		%toc,%					zu toc
-		%section=chapter,%		Überschriften-Ebene
-		nostyles,%
-		translate=babel,%
-		hyperfirst,%
-		indexonlyfirst, %
-		shortcuts,%
-		xindy={language=german-din}
-		]{glossaries}
+% List of abbreviations and and formulas
+\RequirePackage[%acronym,			% Abbreviations
+				symbols,			% Formula symbols
+				nomain,				% No glossary
+				nogroupskip,		% Automatic spacing between groups
+				%toc,				% Add to table of content (toc)
+				%section=chapter,	% Heading level
+				nostyles,			%
+				translate=babel,	%
+				hyperfirst,			%
+				indexonlyfirst, 	%
+				shortcuts,			%
+				xindy={language=german-din}
+				]{glossaries}
 \RequirePackage{glossary-long}
 
 
-%   Referenzen
+% References
 \RequirePackage[ngerman]{cleveref}
 
-% Floatbarrier für alle Sections?
+
+% Floatbarrier for all Sections?
 \usepackage[section]{placeins}
 
 
-% Referenzen
+% References
 \crefname{equation}{}{}
 \Crefname{equation}{Gleichung}{Gleichungen}
 \crefname{figure}{Abb.}{Abb.}
@@ -136,20 +158,23 @@
 \addto\extrasngerman{\def\chapterautorefname{Kapitel}} 
 \addto\extrasngerman{\def\sectionautorefname{Abschnitt}} 
 
+
+% Set list and abbreviation names for figures and tables
 \renewcaptionname{ngerman}{\listfigurename}{Abbildungen}
 \renewcaptionname{ngerman}{\listtablename}{Tabellen}
 \renewcaptionname{ngerman}{\figurename}{Abb.}
 \renewcaptionname{ngerman}{\tablename}{Tab.}
 
 
-% Eigene Funktionen
+% Custom functions
 \newcommand{\centercell}[1]{\multicolumn{1}{c}{#1}}
 
-% Makros
 
+% Custom macros
 \DeclareRobustCommand{\glscaption}[1]{\glsentrytext{#1}}
 \newcommand{\bigcell}[2]{\begin{tabular}{@{}#1@{}}#2\end{tabular}}
-%Todos
+
+% Todo Content macro
 \newcommand{\todocontent}[1]{
 	\vspace{2mm} 
 	\textbf{\textcolor{RWTHrot}{TODO:}}
@@ -157,6 +182,7 @@
 	\vspace{2mm}
 	\\}
 
+% Inlcude figure macro
 \newcommand{\includeFig}[2]{%
 	\ifdefined\INCLUDETIKZ%
 	\input{#2}%
@@ -169,44 +195,44 @@
 	\fi%
 }
 
-% Umgebungen
-\newenvironment{herefigure}%
-{\noindent\begin{minipage}{\linewidth}% to keep image and caption on one page
-		\captionsetup{type=figure}%setzt Links an den Anfang der Umbegung (hypcap)
+% Environments
+\newenvironment{herefigure}				%
+{\noindent\begin{minipage}{\linewidth}	% to keep image and caption on one page
+		\captionsetup{type=figure}		% set links to beginning of environment (hypcap)
 	}%
 	{%
 	\end{minipage}%
 }
 
-\newenvironment{heretable}%
-{\noindent\begin{minipage}{\linewidth}% to keep image and caption on one page
-		\captionsetup{type=table}%setzt Links an den Anfang der Umbegung (hypcap)
+\newenvironment{heretable}				%
+{\noindent\begin{minipage}{\linewidth}	% to keep image and caption on one page
+		\captionsetup{type=table}		% set links to beginning of environment (hypcap)
 	}%
 	{%
 	\end{minipage}%
 }
 
-% Layout der Seiten / Layout of the pages
+% Layout of the pages
 
-% Abstand vor und nach den Ueberschriften anpassen
+% Adjust spacing before and after headings
 \renewcommand*{\chapterheadstartvskip}{\vspace*{\baselineskip}}
 \renewcommand*{\chapterheadendvskip}{\vspace{\baselineskip}}
 
 \RedeclareSectionCommand[%
-tocnumwidth=2.5em,% mehr Platz für die Nummer von part-Einträgen
+tocnumwidth=2.5em,						% more space for numbering of part entries
 ]{part}
 
 \RedeclareSectionCommand[%
-tocnumwidth=2.5em,% mehr Platz für die Nummer von chapter-Einträgen
+tocnumwidth=2.5em,						% more space for numbering of chapter entries
 ]{chapter}
 
 \RedeclareSectionCommand[%
-tocnumwidth=2.5em, % mehr Platz für die Nummer von section-Einträgen
-tocindent=2.5em,% mehr Platz für die Nummer von section-Einträgen
+tocnumwidth=2.5em, 						% more space for numbering of section entries
+tocindent=2.5em,						% more space for numbering of section entries
 ]{section}
 
 \RedeclareSectionCommand[%
-tocindent=5.1em,% mehr Platz für die Nummer von section-Einträgen
+tocindent=5.1em,						% more space for numbering of section entries
 ]{subsection}
 
 \makeatletter
