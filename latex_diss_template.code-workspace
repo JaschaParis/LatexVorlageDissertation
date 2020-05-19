@@ -114,6 +114,7 @@
 					"-time",
 					"-silent",
 					"-output-directory=%OUTDIR%/tikz",
+					"-cd",
 					"tikz/*.tex"
 				],
 				"env": {}
