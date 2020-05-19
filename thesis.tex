@@ -1,43 +1,56 @@
 %&build/preamble/DissertationPreamble
 
-%% Dynamische Preamble: Ändern der Kompilierungsoptionen durch ein oder auskommentieren.
+% --------------- %
+% DYNAMIC OPTIONS %
+% --------------- %
 
-% Include Tikz: In der finalen Version sind Formelzeichen auch in Bildern verlinkt und die Datei wird insgesamt kleiner.
+% Change document options by commenting in or out the custom commands
+
+% OPTION
+% For the final version for linking formula symbols in figures and to minimize file size
 \newcommand{\INCLUDETIKZ}{}
 
-% Build Glossaries: Die Symbolverzeichnisse werden erstellt, jedoch dauert das kompilieren länger
-%\newcommand{\BUILDGLOSSARIES}{}
+% OPTION
+% Creation of the glossaries, which required compile time
+\newcommand{\BUILDGLOSSARIES}{}
 
-% Vorlegen: Die Vorlage-Version ist die Korrekturversion. Sie enthält ein anderes Deckblatt und wird einseitig gedruckt. Ebenfalls wird das Vorwort nicht eingebunden.
-\newcommand{\VORLEGEN}{}		% choose this for the correction version
-% @Jascha: Please also edit DissertationPreamble and change 'twoside' to 'false' Correct?
+% OPTION
+% Create the correction version for your first examiner. Therefore the front page is different, it is printed single-paged and it does not include the preface.
+\newcommand{\VORLEGEN}{}
+% @Jascha: Is it also required to change 'twoside' to false within DissertationPreamble for correct layout?
 
-% Wenn finale Version, zweiseitig
+
+% ---------------- %
+% DYNAMIC SETTINGS %
+% ---------------- %
+
+% If it is the final submission version, enable twoside layout
 \ifdefined\VORLEGEN
 \else 
 \newcommand{\ZWEISEITIG}{}
 \fi
 
+% Enable blindtext for THIS template for showing the formatting result. Please remove it for writing your dissertation
 \usepackage{blindtext}
 
-%% Satzeinstellungen:
-\tolerance		= 450 				% Weissraum, default 1000
-\pretolerance   = 100   			% default 100
-\clubpenalty 	= 4000 				% Waisenkind
-\widowpenalty 	= 4000 				% Witwe
-\renewcommand\ngermanhyphenmins{23} % Trennungen nach x Buchstaben links und nach y rechts, default 23
-\hyphenpenalty = 150 				% Trennungsbestrafung, default 50
+% Block settings
+\pretolerance   = 100   			% First attempt: TeX line breaking algorithm tries to fit paragraphs without hyphenation (default 100)
+\tolerance		= 450 				% Second attempt: Tex line breaking algorithm uses hyphenation with the given tolerance as maximum (default 1000)
+\clubpenalty 	= 4000 				% Penalty against single sentances of a paragraph at the top of a new page (so called clubs)
+\widowpenalty 	= 4000 				% Penalty against single sentences of a paragraph at the end of a page (so called widows)
+\renewcommand\ngermanhyphenmins{23} % Word splitting with hyphen after x letters left and after y letters right (default 23)
+\hyphenpenalty = 150 				% Penalty for splitting words with hyphen across multiple lines (default 50)
 
-% PDF Metadaten
+% PDF meta data
 \hypersetup{%
-	pdfauthor={\autor},
-	pdftitle={\titel},
-	pdfkeywords={Mein Stichwort}}
+	pdfauthor	= {\autor},
+	pdftitle	= {\titel},
+	pdfkeywords	= {Mein Stichwort}}
 
-% Literaturdatei
+% Include bib file
 \addbibresource{references/references.bib} 
 
-% Show only DOI OR ISBN (sonst redundant)
+% Show only DOI OR ISBN (otherwise redundant)
 \AtEveryBibitem{%
 	\iffieldundef{doi}
 	{}
@@ -45,38 +58,50 @@
 		\clearfield{isbn}}%
 }
 
+
 \input{template/setGlossariesDissertation}
-% Wenn baue Symbolverzeichne, makeglossaries
+
+% If BUILDGLOSSARIES is true, run makeglossaries
 \ifdefined\BUILDGLOSSARIES
 \makeglossaries
 \else 
 \fi
 
-% Dokument
+
+% ------------ %
+% FRONT MATTER %
+% ------------ %
+
 \begin{document}
 
-% Binde Cover ein
+% Include front cover
 \pagenumbering{Alph}
 \includepdf[pages=1]{tikz/cover_front.pdf}
 \cleardoublepage
 
-% Binde dynamische Preamble ein
+% Include dynamic preamble
 \include{preamble/preamble}
 
 \cleardoublepage
 
+% Create table of contents
 \pdfbookmark[1]{\contentsname}{toc}
-\tableofcontents					% Inhaltsverzeichnis / Table of contents
+\tableofcontents
 
+% Create list of symbols
 \cleardoublepage
 \input{preamble/symbolliste}
-\input{preamble/symbole}			%  Formelzeichenverzeichnis / List of symbols
+\input{preamble/symbole}
 \cleardoublepage
 
-% Inhalt / Contents
-\mainmatter		% Beginn des Hauptteils / Begin of the main body
 
-% Setze Headmarks für ein oder zweiseitig
+% ----------- %
+% MAIN MATTER %
+% ----------- %
+
+\mainmatter
+
+% Set headmarks regarding singlesided or twosided
 \ifdefined\ZWEISEITIG
 	\ohead{\headmark}
 	\automark[section]{chapter}
@@ -88,34 +113,43 @@
 	\automark[chapter]{chapter}
 \fi
 
+% Include content
 \input{content/content}
 
-\cleardoublepage
-%\pagenumbering{Roman} %if you prefer roman numbers in appendix
 
-% Bei den Studierenden bedanken!
+% ----------- %
+% BACK MATTER %
+% ----------- %
+
+\cleardoublepage
+%\pagenumbering{Roman} 	% If you prefer roman numbers in appendix
+
+% Thanks to the students who supported this dissertation
 \input{content/studentsthesis}
 \cleardoublepage
 
-\tolerance 5000 % seit gutmütig zu dem Literaturverzeichnis
+% Print bibliography
+\tolerance 5000 		% Be generous with the bibliography
 \begin{spacing}{0.85}
 \raggedright{%
-\printbibliography} % Literaturverzeichnis
+\printbibliography} 
 \end{spacing}
 
-\tolerance 200 % sei wieder etwas strenger
+% Undo tolerance settings from bibliography
+\tolerance 200 			% Be more strict again
 
-\listoftables						% Tabellenverzeichnis
+% List of Tables and Figures
+\listoftables			
 \cleardoublepage
-\listoffigures						% Abbildungsverzeichnis
+\listoffigures						
 
-% Anhang
+% Appendix
 \appendix
 \addtocontents{toc}{\protect\newpage}
 \input{appendix/appendix}
 \backmatter
 
-% Buchruecken
+% Back cover
 \cleardoublepage
 \includepdf[pages=1]{tikz/cover_back.pdf}
 
