@@ -3,17 +3,26 @@
 
 \documentclass[12pt, tikz, border=0mm]{standalone}
 
-% Schriften
+% -------- %
+% Packages %
+% -------- %
+
+% Use custom fonts package
 \usepackage{packages/DissertationFontPackage}
-% Tikz-Paket
+
+% Use custom TikZ package
 \usepackage{packages/TikZPackage}
 
-% Ergaenzungen
+% Set template data
 \input{template/setAdditions}
 \input{template/setData}
 \input{template/setTikZStyles}
 
-% Glossaries
+
+% ---------- %
+% Glossaries %
+% ---------- %
+
 \newglossary*{akronym}{Abkürzungen}
 \newglossary*{indices}{Indizes}
 \newglossary*{latin_symbols}{Lateinische Formelzeichen}
