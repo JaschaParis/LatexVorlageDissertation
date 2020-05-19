@@ -7,12 +7,12 @@
 Formeln können mit den in \texttt{preamble/symbolliste} definierten Formelzeichen eingefügt werden. So werden die Formelzeichen direkt korrekt verlinkt, siehe \cref{eq:formel1,eq:formel2}. Beachte auch den Befehl \texttt{\textbackslash vind}, der für Vektoren einen leicht eingerückten Index bereitstellt. Weitere Befehle für die Darstellung von Formeln sind in \texttt{DissertationFontPackage.sty} definiert, z.B.\ \texttt{\textbackslash tind} für Textindizes. Die Verwendung dieser Befehle ergibt ein typografisch deutlich besseres Bild, vergleiche \cref{eq:formel1,eq:formel3}. Es sollte sowieso ein wenig auf die Typografie geachtet werden, so ist z.B.\ wie folgt zu setzen \texttt{z.B.\textbackslash} -- mit \textit{Backslash}, sonst stimmen die Abstände nicht.
 
 \begin{align}
-\label{eq:formel1}
-\gls{x}\vind{\gls{ist}} &= \gls{x}\vind{\gls{soll}} + \gls{err} \\
-\label{eq:formel3}
-\gls{x}_{\gls{ist}} &= \gls{x}_{\gls{soll}} + \gls{err} \\
-\label{eq:formel2}
-\gls{phi}_{\gls{ist}} &= \gls{phi}_{\gls{soll}} + \gls{deltaphi}
+	\label{eq:formel1}
+	\gls{x}\vind{\gls{ist}} & = \gls{x}\vind{\gls{soll}} + \gls{err}    \\
+	\label{eq:formel3}
+	\gls{x}_{\gls{ist}}     & = \gls{x}_{\gls{soll}} + \gls{err}        \\
+	\label{eq:formel2}
+	\gls{phi}_{\gls{ist}}   & = \gls{phi}_{\gls{soll}} + \gls{deltaphi}
 \end{align}
 
 \blindtext[3]
@@ -31,8 +31,8 @@ Eine Tabelle könnte wie folgt aussehen, siehe \cref{tab:programme}.
 	\label{tab:programme}
 	\begin{tabular}{lll}
 		\toprule
-		Programm            & quelloffen und frei &  Latex-geeignet                 \\ \midrule
-		JabRef              &     ja              &    ja    \\ \bottomrule
+		Programm & quelloffen und frei & Latex-geeignet \\ \midrule
+		JabRef   & ja                  & ja             \\ \bottomrule
 	\end{tabular}
 \end{table}
 
