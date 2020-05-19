@@ -9,7 +9,7 @@
 		"latex-workshop.latex.outDir": "%DIR%/build",
 		"latex-workshop.latex.recipe.default": "first",
 		"latex-workshop.view.pdf.external.viewer.command": "C:\\Program Files (x86)\\Adobe\\Acrobat Reader DC\\Reader\\AcroRd32.exe",
-		"latex-workshop.chktex.enabled": true,
+		"latex-workshop.chktex.enabled": false,
 		"latex-workshop.latex.clean.subfolder.enabled": true,
 		"latex-workshop.latex.clean.fileTypes": [
 			"*.aux",
