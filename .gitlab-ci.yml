@@ -16,3 +16,4 @@ build:
   artifacts:
     paths:
       - Thesis.pdf
+  allow_failure: true # As long as the docker image is not running TeX Live 2020
