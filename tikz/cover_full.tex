@@ -6,7 +6,11 @@
 	\begin{document}
 \fi
 \begin{tikzpicture}[auto,font=\footnotesize]
-% % % % % % % % % % % % % % % % % % % % % % % % %
+
+% ---------- %
+% Start TikZ %
+% ---------- %
+
 \newcommand{\ruecken}{15.5563mm}
 \newcommand{\aufschlag}{4.2464mm}
 
@@ -43,7 +47,11 @@
 	\draw [draw=none,fill=RWTHhellblau] (Institut.south west) rectangle (maxpunkt_aufschlag -| nullpunkt_ruecken);
 	\draw [draw=none,fill=RWTHhellblau] (Name.south west) rectangle (Name.north east -| maxpunkt_aufschlag);
 \end{scope}
-% % % % % % % % % % % % % % % % % % % % % % % % %
+
+% -------- %
+% End TikZ %
+% -------- %	
+
 \end{tikzpicture}
 \ifdefined\INCLUDETIKZ
 \else 

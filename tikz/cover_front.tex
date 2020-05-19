@@ -6,14 +6,20 @@
 	\begin{document}
 \fi
 \begin{tikzpicture}[auto,font=\footnotesize]
-% % % % % % % % % % % % % % % % % % % % % % % % %
-%
+
+% ---------- %
+% Start TikZ %
+% ---------- %
+
 \node [inner sep=0, outer sep=0, anchor=south west] (nullpunkt_front) at (0,0) {};
 \node [inner sep=0, outer sep=0, anchor=north east] (maxpunkt_front) at (210,297) {};
-%
+
 \input{content/cover_front_content}
-%
-% % % % % % % % % % % % % % % % % % % % % % % % %
+
+% -------- %
+% End TikZ %
+% -------- %
+
 \end{tikzpicture}
 \ifdefined\INCLUDETIKZ
 \else 

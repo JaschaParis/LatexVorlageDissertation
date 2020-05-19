@@ -6,7 +6,10 @@
 	\begin{document}
 \fi
 \begin{tikzpicture}[auto,font=\footnotesize]
-% % % % % % % % % % % % % % % % % % % % % % % % %
+
+% ---------- %
+% Start TikZ %
+% ---------- %
 
 \newcommand{\figureheight}{100}
 \newcommand{\fieldwidth}{60mm}
@@ -49,7 +52,10 @@
 
 \draw [draw=none] (lbl_Prozess.east) -| node [anchor=center] (lbl_Vorlage) {Diese Vorlage} (fcomment4.north);
 	 
-% % % % % % % % % % % % % % % % % % % % % % % % %
+% -------- %
+% End TikZ %
+% -------- %
+
 \end{tikzpicture}
 \ifdefined\INCLUDETIKZ
 \else 
