@@ -1,8 +1,6 @@
 #!/bin/bash
 
-cd tikz
-
-# Set Target Directory
+# Set Target Directory with respect to the -cd option of latexmk
 DIR="../build/tikz"
 
 # Create target directory if it does not exist yet
@@ -11,10 +9,10 @@ if [ ! -d "$DIR" ]; then
 fi
 
 # Compile all tikz figures
-for file in *.tex;
+for file in tikz/*.tex;
 do
   echo "$file"
-  latexmk -pdf -time -output-directory="$DIR" "$file"
+  latexmk -pdf -time -output-directory="$DIR" -cd "$file"
 done
 
 cd ..
