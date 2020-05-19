@@ -1,5 +1,7 @@
 
-%% Glossaries
+% ---------- %
+% Glossaries %
+% ---------- %
 
 \newglossary*{akronym}{Abkürzungen}
 \newglossary*{indices}{Indizes}
@@ -48,7 +50,7 @@
 \glssetnoexpandfield{size}
 \glssetnoexpandfield{addinfo}
 
-%Ein neuer Verzeichnisstil für Abkürzungen
+% A new glossaries style for abbreviations
 \newglossarystyle{akronym}{
 	\setglossarystyle{long}
 	\renewenvironment{theglossary}  
@@ -58,7 +60,7 @@
 				@{} rp{0.09\linewidth} @{}}
 		}  
 		{\end{longtable}}
-	% Kopf der Tabelle
+	% Header of the table
 	\renewcommand*{\glossaryheader}{
 		\toprule
 		\bfseries Abkürzung
@@ -70,13 +72,13 @@
 		\bottomrule \endfoot
 	}
 	\renewcommand*{\glossentry}[2]{
-		\glstarget{##1}{\glossentryname{##1}} %Abkürzung
-		& \glossentrydesc{##1}   %Beschreibung
+		\glstarget{##1}{\glossentryname{##1}} 	% Abbreviation
+		& \glossentrydesc{##1}   				% Description
 		& ##2
 		\\
 	}
 }
-%Ein neuer Verzeichnisstil für Symbole, der auch die Einheit mit ausgibt
+% A new glossaries style for formula symbols containing the symbols unit
 \newglossarystyle{symbols}{
 	\setglossarystyle{long3col}
 	\renewenvironment{theglossary}
@@ -88,7 +90,7 @@
 				@{} rp{0.09\linewidth} @{}}
 		}
 		{\end{longtable}}
-	% Kopf der Tabelle
+	% Header of the table
 	\renewcommand*{\glossaryheader}{  
 		\toprule        
 		\bfseries Symbol
@@ -114,7 +116,7 @@
 	}
 }
 
-%Ein neuer Verzeichnisstil für Indizes, wie ein Abkürzungsverzeichnis, nur statt Abkürzung Index
+% A new glossaries style for indices (as abbreviations but for indices)
 \newglossarystyle{indices}{  
 	\setglossarystyle{long}
 	\renewenvironment{theglossary}  
@@ -124,7 +126,7 @@
 				@{} rp{0.09\linewidth} @{}}
 		}  
 		{\end{longtable}}
-	% Kopf der Tabelle
+	% Header of the table
 	\renewcommand*{\glossaryheader}{  
 		\toprule
 		\bfseries Index
@@ -136,8 +138,8 @@
 		\bottomrule \endfoot
 	}
 	\renewcommand*{\glossentry}[2]{
-		\ensuremath{\glstarget{##1}{\glossentryname{##1}}} %Abkürzung
-		& \glossentrydesc{##1}   %Beschreibung
+		\ensuremath{\glstarget{##1}{\glossentryname{##1}}} 	% Abbreviation
+		& \glossentrydesc{##1}   							% Description
 		& ##2
 		\\
 	}
