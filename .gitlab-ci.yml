@@ -6,9 +6,9 @@ build:
     - echo 'Make Bash Scripts executable'
     - chmod u+x scripts/build.bash
     - chmod u+x scripts/clean.bash
+    - chmod u+x scripts/compile_tikz.bash
     - chmod u+x scripts/create.bash
     - chmod u+x scripts/precompile.bash
-    - chmod u+x tikz/Script_compile_figures.bash
     - echo 'Run Pipeline Build'
     - ./scripts/create.bash
     - echo 'Move pdf in root directory for easy access'
