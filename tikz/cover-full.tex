@@ -33,7 +33,7 @@
 %\draw [draw=green] (nullpunkt_front) rectangle (maxpunkt_front);
 %\draw [draw=pink] (nullpunkt_aufschlag) rectangle (maxpunkt_aufschlag);
 
-\input{content/cover_front_content}
+\input{content/cover-front-content}
 
 \node [anchor=north east, minimum height=\ruecken, minimum width=60mm, text=weiss, text width=50mm, rotate=90, align=center] (Institut_ruecken) at (maxpunkt_ruecken -| nullpunkt_ruecken) {\textsf{\institute}};
 
@@ -41,7 +41,7 @@
 
 \node [anchor=west, text=RWTHhellblau, rotate=90, align=center,font=\Large] (rueckenautor) at ($(nullpunkt_ruecken) + (\ruecken/2,10)$) {\textsf{\autor}};
 
-\input{content/cover_back_content}
+\input{content/cover-back-content}
 
 \begin{scope}[on background layer]
 	\draw [draw=none,fill=RWTHhellblau] (Institut.south west) rectangle (maxpunkt_aufschlag -| nullpunkt_ruecken);
