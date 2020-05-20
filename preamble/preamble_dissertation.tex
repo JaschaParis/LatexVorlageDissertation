@@ -32,11 +32,14 @@
 
 % Load custom dissertation package and set template data
 \usepackage{packages/mech-eng-dissertation}
-\input{template/setData}
-\input{template/setAdditions}
+\input{template/set-meta-data}
+\input{template/set-graphics-paths}
+\input{template/set-colors}
+\input{template/set-custom-units}
+\input{template/set-word-separation}
 
 \AfterBibliographyPreamble{\raggedright}
 
 % Load custom TikZ package and set styles for embedded TikZ graphics
 \usepackage{packages/mech-eng-dissertation-tikz}
-\input{template/setTikZStyles}
+\input{template/set-tikz-styles}

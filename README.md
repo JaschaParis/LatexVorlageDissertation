@@ -2,9 +2,9 @@
 This is a latex template for (german) dissertations tailored for the area of mechanical engineering.
 English version of the readme below.
 
-tldr, Windows: setData.tex ändern, Script_precompile.bat ausführen, alle *.tex-Dateien in tikz kompilieren und anschließend dissertation.tex mit latexmk kompilieren.
+tldr, Windows: set-meta-data.tex ändern, Script_precompile.bat ausführen, alle *.tex-Dateien in tikz kompilieren und anschließend dissertation.tex mit latexmk kompilieren.
 
-tldr, Linux: setData.tex ändern, Script_create.sh ausführen.
+tldr, Linux: set-meta-data.tex ändern, Script_create.sh ausführen.
 
 Latex entwickelt sich schnell weiter und viele Pakete, die in Vorlagen verwendet werden, sind inzwischen veraltet. Dementsprechend wollte ich für meine Dissertation eine aktuelle Vorlage erstellen. Zusätzlich wollte ich gerne ein automatisch sortiertes Symbolverzeichnis und nach und nach kamen weitere Anforderungen hinzu. Insgesamt entstand so eine Vorlage, die unter anderem über die folgenden Eigenschaften verfügt:
 
@@ -20,9 +20,9 @@ Latex entwickelt sich schnell weiter und viele Pakete, die in Vorlagen verwendet
 
 ----
 
-tldr, windows: change setData.tex, run Script_precompile.bat, compile all *.tex-files in tikz and finally run dissertation.tex with latexmk.
+tldr, windows: change set-meta-data.tex, run Script_precompile.bat, compile all *.tex-files in tikz and finally run dissertation.tex with latexmk.
 
-tldr, linux: change setData.tex, run Script_create.sh.
+tldr, linux: change set-meta-data.tex, run Script_create.sh.
 
 Latex is evolving rapidly and many packages used in templates are now obsolete. Accordingly I wanted to create a current template for my dissertation. Additionally I wanted an automatically sorted symbol directory and little by little more requirements were added. All in all, a template was created that has the following features, among others:
 
