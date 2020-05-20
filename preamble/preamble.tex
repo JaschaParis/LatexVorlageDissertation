@@ -2,13 +2,13 @@
 % !TeX spellcheck = de_DE
 % !TeX root = ../dissertation.tex
 
-\ifdefined\VORLEGEN
+\ifdefined\BUILDCORRECTIONVERSION
 	\input{preamble/deckblatt_zulassung}
 \else 
 	\input{preamble/deckblatt_pflichtexemplare}
 \fi
 
-\ifdefined\VORLEGEN
+\ifdefined\BUILDCORRECTIONVERSION
 \else
 	\thispagestyle{empty}
 	\input{preamble/impressum}
@@ -18,7 +18,7 @@
 % Begin of the prefix
 \frontmatter 
 
-\ifdefined\ZWEISEITIG
+\ifdefined\TWOSIDED
 	\ohead{\headmark}
 	\automark[section]{chapter}
 \else 
@@ -30,7 +30,7 @@
 \fi
 
 
-\ifdefined\VORLEGEN
+\ifdefined\BUILDCORRECTIONVERSION
 \cleardoublepage
 \else
 	\chapter*{Vorwort}

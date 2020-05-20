@@ -15,8 +15,8 @@
 \newcommand{\BUILDGLOSSARIES}{}
 
 % OPTION
-% Create the correction version for your first examiner. Therefore the front page is different, it is printed single-paged and it does not include the preface.
-\newcommand{\VORLEGEN}{}
+% Create the correction version for your examiners. Therefore the front page is different, it is printed single-paged and it does not include the preface.
+\newcommand{\BUILDCORRECTIONVERSION}{}
 % @Jascha: Is it also required to change 'twoside' to false within preamble_dissertation for correct layout?
 
 
@@ -25,9 +25,9 @@
 % ---------------- %
 
 % If it is the final submission version, enable twoside layout
-\ifdefined\VORLEGEN
+\ifdefined\BUILDCORRECTIONVERSION
 \else 
-\newcommand{\ZWEISEITIG}{}
+\newcommand{\TWOSIDED}{}
 \fi
 
 % Enable blindtext for THIS template for showing the formatting result. Please remove it for writing your dissertation
@@ -103,7 +103,7 @@
 \mainmatter
 
 % Set headmarks regarding singlesided or twosided
-\ifdefined\ZWEISEITIG
+\ifdefined\TWOSIDED
 	\ohead{\headmark}
 	\automark[section]{chapter}
 \else 
