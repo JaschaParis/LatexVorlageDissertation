@@ -88,8 +88,8 @@
 					"-recorder",
 					"-file-line-error",
 					"-output-directory=%OUTDIR%/preamble",
-					"-jobname=\"DissertationPreamble\"",
-					"&pdflatex DissertationPreamble.tex\\dump"
+					"-jobname=\"preamble_dissertation\"",
+					"&pdflatex preamble/preamble_dissertation.tex\\dump"
 				],
 				"env": {}
 			},
@@ -101,8 +101,8 @@
 					"-recorder",
 					"-file-line-error",
 					"-output-directory=%OUTDIR%/preamble",
-					"-jobname=\"TikZPreamble\"",
-					"&pdflatex TikZPreamble.tex\\dump"
+					"-jobname=\"preamble_tikz\"",
+					"&pdflatex preamble/preamble_tikz.tex\\dump"
 				],
 				"env": {}
 			},
