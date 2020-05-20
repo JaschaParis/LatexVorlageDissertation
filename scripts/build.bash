@@ -12,7 +12,7 @@ starttime=$(date +%s.%N)
 
 echo "### Create Document ###"
 
-latexmk -pdf -silent -time -synctex=1 -output-directory="$DIR" "thesis"
+latexmk -pdf -silent -time -synctex=1 -output-directory="$DIR" "dissertation"
 
 echo "### Finished: Create Document ###"
 

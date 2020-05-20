@@ -130,7 +130,7 @@
 					"-time",
 					"-pdf",
 					"-outdir=%OUTDIR%",
-					"thesis"
+					"dissertation"
 				],
 				"env": {}
 			}

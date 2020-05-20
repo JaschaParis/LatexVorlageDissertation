@@ -12,8 +12,8 @@ build:
     - echo 'Run Pipeline Build'
     - ./scripts/create.bash
     - echo 'Move pdf in root directory for easy access'
-    - mv build/thesis.pdf Thesis.pdf
+    - mv build/dissertation.pdf Dissertation.pdf
   artifacts:
     paths:
-      - Thesis.pdf
+      - Dissertation.pdf
   allow_failure: true # As long as the docker image is not running TeX Live 2020

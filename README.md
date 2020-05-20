@@ -2,7 +2,7 @@
 This is a latex template for (german) dissertations tailored for the area of mechanical engineering.
 English version of the readme below.
 
-tldr, Windows: setData.tex ändern, Script_precompile.bat ausführen, alle *.tex-Dateien in tikz kompilieren und anschließend thesis.tex mit latexmk kompilieren.
+tldr, Windows: setData.tex ändern, Script_precompile.bat ausführen, alle *.tex-Dateien in tikz kompilieren und anschließend dissertation.tex mit latexmk kompilieren.
 
 tldr, Linux: setData.tex ändern, Script_create.sh ausführen.
 
@@ -20,7 +20,7 @@ Latex entwickelt sich schnell weiter und viele Pakete, die in Vorlagen verwendet
 
 ----
 
-tldr, windows: change setData.tex, run Script_precompile.bat, compile all *.tex-files in tikz and finally run thesis.tex with latexmk.
+tldr, windows: change setData.tex, run Script_precompile.bat, compile all *.tex-files in tikz and finally run dissertation.tex with latexmk.
 
 tldr, linux: change setData.tex, run Script_create.sh.
 

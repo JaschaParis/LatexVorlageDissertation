@@ -28,7 +28,7 @@ if [ ! -d "$DIR" ]; then
   mkdir -p $DIR
 fi
 
-latexmk -pdf -silent -time -synctex=1 -output-directory="$DIR"  "thesis"
+latexmk -pdf -silent -time -synctex=1 -output-directory="$DIR"  "dissertation"
 
 echo "### Finished: Create Document ###"
 
