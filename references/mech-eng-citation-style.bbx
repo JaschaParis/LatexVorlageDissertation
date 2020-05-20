@@ -1,4 +1,4 @@
-\ProvidesFile{ZitierstilMaschinenbau.bbx}[ZitierstilMaschinenbau]
+\ProvidesFile{mech-eng-citation-style.bbx}[mech-eng-citation-style]
 
 \RequireBibliographyStyle{standard}
 \ExecuteBibliographyOptions{labelalpha,sorting=anyt}
@@ -13,8 +13,8 @@
 \DeclareFieldFormat{labelalphawidth}{\mkbibbrackets{#1}}
 \DeclareFieldFormat{shorthandwidth}{\mkbibbrackets{#1}}
 
-% Ab hier sind die Veränderungen für den IGM-Style eingefügt
-% Neue Befehle werden hier definiert oder alte umdefiniert
+% From here the changes regarding the IGMR Citation Style are inserted
+% Now commands are defined or re-defined in the following section
 
 \defbibenvironment{bibliography}
   {\list
@@ -45,7 +45,7 @@
   {\endlist}
   {\item}
 
-% Anpassen der Driver für die unterschiedlichen Dokumententypen
+% Adjusting the drivers for different types of documents
 
 \DeclareBibliographyDriver{article}{%
   \usebibmacro{bibindex}%
@@ -53,7 +53,7 @@
   \usebibmacro{author/translator+others}%
   \setunit{\labelnamepunct}\newblock
   \usebibmacro{title}%
-  \newline\nopunct																	% geändert: Zeilenumbruch ohne Punkt nach Titel
+  \newline\nopunct																	% changed: Line break without dot after title
   \usebibmacro{in:}%
   \usebibmacro{journal}
   \newunit
@@ -72,8 +72,8 @@
   \usebibmacro{author}%
   \setunit{\labelnamepunct}\newblock
   \usebibmacro{title}%
-  \newline\nopunct																	% geändert: Zeilenumbruch ohne Punkt nach Titel
-  \usebibmacro{publisher+location}													% geändert: publisher+location+date in publisher+location geändert um Verlag, Verlagsort vom Datum zu trennen\printfield{edition}%
+  \newline\nopunct																	% changed: line break without dot after title
+  \usebibmacro{publisher+location}									% changed: move publisher+location+date to publisher+location for splitting publisher and publisher location from publishing date \printfield{edition}%
   \newunit\newblock
   \printfield{edition}%
   \newunit\newblock
@@ -94,8 +94,8 @@
   \usebibmacro{editor}%
   \setunit{\labelnamepunct}\newblock
   \usebibmacro{title}%
-  \newline\nopunct																	% geändert: Zeilenumbruch ohne Punkt nach Titel
-  \usebibmacro{publisher+location}													% geändert: publisher+location+date in publisher+location geändert um Verlag, Verlagsort vom Datum zu trennen\printfield{edition}%
+  \newline\nopunct																	% changed: line break without dot after titel
+  \usebibmacro{publisher+location}									% changed: move publisher+location+date to publisher+location for splitting publisher and publisher location from publishing date \printfield{edition}%
   \newunit\newblock
   \printfield{edition}%
   \newunit\newblock
@@ -116,13 +116,13 @@
   \usebibmacro{author/translator+others}%
   \setunit{\labelnamepunct}\newblock
   \usebibmacro{title}%
-  \newline\nopunct																	% geändert: Zeilenumbruch ohne Punkt nach Titel
+  \newline\nopunct																	% changed: line break without dot after title
   \usebibmacro{in:}%
   \usebibmacro{editor}%
   \newunit\newblock
   \usebibmacro{booktitle}%
   \newunit\newblock
-  \usebibmacro{publisher+location}													% geändert: publisher+location+date in publisher+location geändert um Verlag, Verlagsort vom Datum zu trennen\printfield{edition}%
+  \usebibmacro{publisher+location}									% changed: move publisher+location+date to publisher+location for splitting publisher and publisher location from publishing date \printfield{edition}%
   \newunit\newblock
   \printfield{edition}%
   \newunit\newblock
@@ -143,13 +143,13 @@
   \usebibmacro{author/translator+others}%
   \setunit{\labelnamepunct}\newblock
   \usebibmacro{title}%
-  \newline\nopunct																	% geändert: Zeilenumbruch ohne Punkt nach Titel
+  \newline\nopunct																	% chaged: line break without dot after title
   \usebibmacro{in:}%
   \usebibmacro{editor}%
   \newunit\newblock
   \usebibmacro{booktitle}%
   \newunit\newblock
-  \usebibmacro{publisher+location}													% geändert: publisher+location+date in publisher+location geändert um Verlag, Verlagsort vom Datum zu trennen\printfield{edition}%
+  \usebibmacro{publisher+location}									% changed: move publisher+location+date to publisher+location for splitting publisher and publisher location from publishing date \printfield{edition}%
   \newunit\newblock
   \printfield{edition}%
   \newunit\newblock
@@ -170,7 +170,7 @@
   \usebibmacro{author/translator+others}%
   \setunit{\labelnamepunct}\newblock
   \usebibmacro{title}%
-  \newline\nopunct																	% geändert: Zeilenumbruch ohne Punkt nach Titel
+  \newline\nopunct																	% changed: line break without dot after title
   \usebibmacro{in:}%
   \usebibmacro{editor}
   \newunit\newblock
@@ -192,7 +192,7 @@
   \usebibmacro{author/editor+others/translator+others}%
   \setunit{\labelnamepunct}\newblock
   \usebibmacro{title}%
-  \newline\nopunct																	% geändert: Zeilenumbruch ohne Punkt nach Titel
+  \newline\nopunct																	% changed: line break without dot after title
   \printfield{type}%
   \newunit\newblock
   \usebibmacro{editor}%
@@ -316,7 +316,7 @@
   \usebibmacro{finentry}}
 
 
-\DeclareLabelalphaTemplate{															% Hier werden die Shorthands manipuliert
+\DeclareLabelalphaTemplate{															% Here the shorthands are adjusted
   \labelelement{
     \field[final]{shorthand}
     \field{label}
@@ -328,7 +328,7 @@
   }
 }
 
-% Diese Befehle müssen neu definiert werden, um das Datum (date) aus den Macros herauszulösen und unabhängig ans Ende schreiben zu können 
+% These commands need to be re-defined, for isolating the date from the macros for beeing able to append it at the end
 
 \renewbibmacro*{in:}{
   \printtext{%
@@ -407,7 +407,7 @@
      \printdate}%
   \newunit}
 
-\newbibmacro*{publisher+location}{													% publisher und location sind hier zusammengefasst
+\newbibmacro*{publisher+location}{													% publisher and location are summarized
   \printlist{location}%
   \iflistundef{publisher}
     {\setunit*{\addcomma\space}}
@@ -448,14 +448,14 @@
   \newunit}
 
 
-\renewcommand*{\newunitpunct}{\addcomma\space}									% Hinter einer neuen Unit wird ein Komma und kein Punkt mehr eingefügt
+\renewcommand*{\newunitpunct}{\addcomma\space}						% Behind a new Unit comma is used insteaf of dot
 \renewcommand*{\subtitlepunct}{\newunitpunct}
-\renewcommand*{\labelalphaothers}{} 											% Verhindert das "+" Zeichen bei mehr als drei Autoren
-\renewcommand*{\labelnamepunct}{\newline} 											% Macht hinter dem letzten Autor einen Doppelpunkt 
-\renewcommand*{\multinamedelim}{\addsemicolon\space}							% Erzeugt ein Semikolon zwischen den Autoren und verhindert das "und" zwischen letztem und vorletztem Autor
+\renewcommand*{\labelalphaothers}{} 									    % Prevent inserting "+" symbol for more than three authors
+\renewcommand*{\labelnamepunct}{\newline} 								% Set a punctuation colon behind the last author
+\renewcommand*{\multinamedelim}{\addsemicolon\space}			% Set semicolons between authors and prevent addind an "and" between last and penultimate author
 \renewcommand*{\finalnamedelim}{\addsemicolon\space}
 
-\DeclareFieldFormat[article, inbook, incollection, inproceedings, online, patent, thesis, unpublished]{title}{\emph{#1}\isdot} 							% Der Titel bei Artikeln wird kursiv geschrieben
+\DeclareFieldFormat[article, inbook, incollection, inproceedings, online, patent, thesis, unpublished]{title}{\emph{#1}\isdot}  % Title of articel is formatted as italic
 \DeclareFieldFormat{isbn}{\mkbibacro{ISBN}\addcolon\space #1}
 \DeclareFieldFormat{url}{\url{#1}}
 \DeclareFieldFormat{doi}{%
@@ -464,7 +464,7 @@
     {\href{http://dx.doi.org/{#1}}{\nolinkurl{#1}}}
     {\nolinkurl{#1}}
    }
-\DeclareNameAlias{default}{family-given}												% änder die Reihenfolge des Namens in Nachname, Vorname
+\DeclareNameAlias{default}{family-given}								  % change the order of names to last name, first name
 
 \DeclareFieldFormat{journaltitle}{#1}
 \DeclareFieldFormat{booktitle}{#1}
