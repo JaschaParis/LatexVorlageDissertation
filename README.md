@@ -1,4 +1,5 @@
 # LatexVorlageDissertation
+
 This is a latex template for (german) dissertations tailored for the area of mechanical engineering.
 English version of the readme below.
 
@@ -35,4 +36,3 @@ Latex is evolving rapidly and many packages used in templates are now obsolete. 
 * Compliance with recommendations on typography and typesetting. The exception are the characters per line, which is slightly too high.
 * Environments for figures and tables that do not represent floating environments. These can be used in the appendix if many figures are inserted one after the other.
 * Bash-scripts for compilation using linux
-
