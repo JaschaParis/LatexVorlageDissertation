@@ -8,6 +8,6 @@ if [ ! -d "$DIR" ]; then
   mkdir -p $DIR
 fi
 
-pdflatex -ini -recorder -output-directory="$DIR" -jobname="preamble_dissertation" -cd "&pdflatex preamble/preamble_dissertation.tex\dump"
+pdflatex -ini -recorder -output-directory="$DIR" -jobname="preamble-dissertation" -cd "&pdflatex preamble/preamble-dissertation.tex\dump"
 
-pdflatex -ini -recorder -output-directory="$DIR" -jobname="preamble_tikz" -cd "&pdflatex preamble/preamble_tikz.tex\dump"
+pdflatex -ini -recorder -output-directory="$DIR" -jobname="preamble-tikz" -cd "&pdflatex preamble/preamble-tikz.tex\dump"
