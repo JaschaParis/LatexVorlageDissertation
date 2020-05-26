@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo "Set Output directory"
-DIR="../build/preamble"
+DIR="build/preamble"
 
 echo "Create output directory if it does not exist"
 if [ ! -d "$DIR" ]; then

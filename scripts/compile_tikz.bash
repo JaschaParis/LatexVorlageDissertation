@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Set Target Directory with respect to the -cd option of latexmk
-DIR="../build/tikz"
+DIR="build/tikz"
 
 # Create target directory if it does not exist yet
 if [ ! -d "$DIR" ]; then
@@ -12,7 +12,7 @@ fi
 for file in tikz/*.tex;
 do
   echo "$file"
-  latexmk -pdf -time -output-directory="$DIR" -cd "$file"
+  latexmk -pdf -time -output-directory="../$DIR" -cd "$file"
 done
 
 ## Old script from Jascha with additional features that I haven´t understood, yet
