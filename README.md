@@ -36,3 +36,8 @@ Latex is evolving rapidly and many packages used in templates are now obsolete. 
 * Compliance with recommendations on typography and typesetting. The exception are the characters per line, which is slightly too high.
 * Environments for figures and tables that do not represent floating environments. These can be used in the appendix if many figures are inserted one after the other.
 * Bash-scripts for compilation using linux
+
+----
+
+Thanks for the contribution of:
+* Haschke (leaner and clearer structure, several improvements)
