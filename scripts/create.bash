@@ -33,7 +33,7 @@ latexmk -pdf -silent -time -synctex=1 -output-directory="$DIR"  "dissertation"
 echo "### Finished: Create Document ###"
 
 endtime=$(date +%s.%N)    
-runtime=$(python -c "print(${endtime} - ${starttime})")
+runtime=$(python3 -c "print(${endtime} - ${starttime})")
 
 echo "### FINISHED ###"
 echo "Runtime was $runtime"
