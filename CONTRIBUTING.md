@@ -29,3 +29,8 @@ New introduced values are named in `English` as all other LaTeX values are writt
 ## Further Reading
 
 A good reference for further improvements of this *Contribution Guide* is the article of Didier Verna on [https://www.tug.org](https://www.tug.org) with the title [Towards LaTeX coding standards](https://www.tug.org/TUGboat/tb32-3/tb102verna.pdf).
+
+---
+
+## ToDo
+* Provide .bat scripts for windows user
